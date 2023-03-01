@@ -12,10 +12,10 @@ extern weak int module_start(unsigned int, const void *);
 extern weak int module_stop(unsigned int, const void *);
 extern weak void module_exit(void);
 
-extern void (*__preinit_array_start[])(void);
-extern void (*__preinit_array_end[])(void);
-extern void (*__init_array_start[])(void);
-extern void (*__init_array_end[])(void);
+extern weak void (*__preinit_array_start[])(void);
+extern weak void (*__preinit_array_end[])(void);
+extern weak void (*__init_array_start[])(void);
+extern weak void (*__init_array_end[])(void);
 
 extern weak unsigned int __aeabi_unwind_cpp_pr0(void);
 extern weak unsigned int __aeabi_unwind_cpp_pr1(void);

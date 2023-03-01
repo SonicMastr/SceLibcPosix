@@ -12,10 +12,10 @@ extern weak char *const _sceUserModuleList[];
 extern weak const int _sceUserModuleListSize;
 unsigned int __crt0_main_sdk_version_var = 0x03570011;
 
-extern void (*__preinit_array_start[])(void);
-extern void (*__preinit_array_end[])(void);
-extern void (*__init_array_start[])(void);
-extern void (*__init_array_end[])(void);
+extern weak void (*__preinit_array_start[])(void);
+extern weak void (*__preinit_array_end[])(void);
+extern weak void (*__init_array_start[])(void);
+extern weak void (*__init_array_end[])(void);
 
 extern weak unsigned int __aeabi_unwind_cpp_pr0(void);
 extern weak unsigned int __aeabi_unwind_cpp_pr1(void);

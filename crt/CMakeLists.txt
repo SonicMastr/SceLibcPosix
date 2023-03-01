@@ -11,5 +11,7 @@ endif()
 project(crt0)
 include("$ENV{VITASDK}/share/vita.cmake" REQUIRED)
 
+include_directories(../include)
+
 add_library(crt0_main OBJECT crt0_main.c)
 add_library(crt0_module OBJECT crt0_module.c)

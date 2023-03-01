@@ -1,0 +1,42 @@
+SceLibcExt:
+  attributes: 0x0
+  version:
+    major: 0x1
+    minor: 0x1
+  nid: 0xfe592db1
+  main:
+    start: __module_start
+    stop: __module_stop
+    exit: __module_exit
+  libraries:
+    SceLibcExt:
+      version: 0x1
+      syscall: false
+      nid: 0xaf18fba9
+      functions:
+      - write: 0x10fd874b
+      - open: 0x2348f998
+      - __module_exit_main: 0x2810df9e
+      - close: 0x310ff200
+      - read: 0x3316348d
+      - __module_start: 0x4e7f0530
+      - __module_start_main: 0x4fd162e9
+      - strnlen: 0x73cc0263
+      - __module_stop_main: 0x8beee427
+      - at_quick_exit: 0x98d59313
+      - __module_exit: 0x98e1e55b
+      - strlcpy: 0xb53bd519
+      - strlcat: 0xb6b25617
+      - __module_stop: 0xb72bcc46
+      - atexit: 0xe07a8410
+      variables:
+      - _fd_mutex: 0x23c71526
+      - g_ChunkStorage: 0x5b0241f7
+      - __fdmap: 0x801038aa
+      - g_FHStorage: 0x8f4963ae
+      - __fdmap_pool: 0x9c473687
+      - g_DHStorage: 0xa1ff7324
+      - __crt0_module_sdk_version_var: 0xc08b0635
+      - _tls_region_info: 0xc7cdb72f
+      - g_OpStorage: 0xeddf00a4
+      - __dso_handle: 0xf49ad47a

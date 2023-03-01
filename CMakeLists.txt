@@ -12,6 +12,6 @@ include("$ENV{VITASDK}/share/vita.cmake" REQUIRED)
 
 project(SceLibcExt)
 
-include_directories(include)
-
 add_subdirectory(crt)
+add_subdirectory(src)
+#add_subdirectory(test)

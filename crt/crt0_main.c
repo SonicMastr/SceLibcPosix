@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <psp2/kernel/clib.h>
+#include <psp2/kernel/modulemgr.h>
+
 #include "crt0_common.h"
 
 #define ARGC_MAX 31

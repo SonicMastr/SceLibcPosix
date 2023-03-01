@@ -8,6 +8,8 @@
 
 #define ARGC_MAX 31
 
+#define DEFAULT_LIBC_EXT_PATH "app0:sce_module/SceLibcExt.suprx"
+
 unsigned int __dso_handle;
 extern weak unsigned int _sceLdTlsDescRegionInfo;
 void *_tls_region_info = &_sceLdTlsDescRegionInfo;
@@ -63,6 +65,10 @@ void _initialize(unsigned int args, void *argp) {
 			}
 		}
 	}
+
+	// No need to abort or anything. Just notify and move on
+	ret = sceKernelLoadStartModule(DEFAULT_LIBC_EXT_PATH, 0, 0, 0, 0, 0);
+	sceClibPrintf("Preload SceLibcExt failed 0x%08x : %s\n", ret, DEFAULT_LIBC_EXT_PATH);
 
 	count = __preinit_array_end - __preinit_array_start;
 	for (loc = 0; loc < count; loc++)

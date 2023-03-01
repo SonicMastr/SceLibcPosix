@@ -19,6 +19,9 @@ _ssize_t read(int fd, void *ptr, size_t len) {
 	}
 
 	switch (fdmap->type) {
+	case VITA_DESCRIPTOR_TTY:
+		ret = sceIoRead(fdmap->sce_uid, ptr, len);
+		break;
 	case VITA_DESCRIPTOR_FILE:
 		ret = sceFiosFHReadSync(NULL, fdmap->sce_uid, ptr, len);
 		break;

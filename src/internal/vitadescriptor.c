@@ -8,6 +8,7 @@
 #include <psp2/io/fcntl.h>
 #include <psp2/io/dirent.h>
 #include <psp2/kernel/threadmgr.h>
+#include <psp2/kernel/processmgr.h>
 #include <psp2/net/net.h>
 
 #include "vitadescriptor.h"
@@ -27,10 +28,41 @@ void _init_fd(void) {
 	memset(__fdmap, 0, sizeof(__fdmap));
 	memset(__fdmap_pool, 0, sizeof(__fdmap_pool));
 
+	__fdmap[STDIN_FILENO] = &__fdmap_pool[STDIN_FILENO];
+	__fdmap[STDIN_FILENO]->sce_uid = sceKernelGetStdin();
+	__fdmap[STDIN_FILENO]->type = VITA_DESCRIPTOR_TTY;
+	__fdmap[STDIN_FILENO]->ref_count = 1;
+
+	__fdmap[STDOUT_FILENO] = &__fdmap_pool[STDOUT_FILENO];
+	__fdmap[STDOUT_FILENO]->sce_uid = sceKernelGetStdout();
+	__fdmap[STDOUT_FILENO]->type = VITA_DESCRIPTOR_TTY;
+	__fdmap[STDOUT_FILENO]->ref_count = 1;
+
+	__fdmap[STDERR_FILENO] = &__fdmap_pool[STDERR_FILENO];
+	__fdmap[STDERR_FILENO]->sce_uid = sceKernelGetStderr();
+	__fdmap[STDERR_FILENO]->type = VITA_DESCRIPTOR_TTY;
+	__fdmap[STDERR_FILENO]->ref_count = 1;
+
 	sceKernelUnlockLwMutex(&_fd_mutex, 1);
 }
 
 void _free_fd(void) {
+	sceKernelLockLwMutex(&_fd_mutex, 1, 0);
+
+	if (__fdmap[STDIN_FILENO]) {
+		memset(__fdmap[STDIN_FILENO], 0, sizeof(DescriptorTranslation));
+		__fdmap[STDIN_FILENO] = NULL;
+	}
+	if (__fdmap[STDOUT_FILENO]) {
+		memset(__fdmap[STDOUT_FILENO], 0, sizeof(DescriptorTranslation));
+		__fdmap[STDOUT_FILENO] = NULL;
+	}
+	if (__fdmap[STDERR_FILENO]) {
+		memset(__fdmap[STDERR_FILENO], 0, sizeof(DescriptorTranslation));
+		__fdmap[STDERR_FILENO] = NULL;
+	}
+
+	sceKernelUnlockLwMutex(&_fd_mutex, 1);
 	sceKernelDeleteLwMutex(&_fd_mutex);
 }
 
@@ -40,7 +72,7 @@ int __acquire_descriptor(void) {
 	sceKernelLockLwMutex(&_fd_mutex, 1, 0);
 
 	// get free descriptor
-	for (fd = 0; fd < MAX_OPEN_FILES; ++fd) {
+	for (fd = 3; fd < MAX_OPEN_FILES; ++fd) {
 		if (__fdmap[fd] == NULL) {
 			// get free pool
 			for (i = 0; i < MAX_OPEN_FILES; ++i) {
@@ -81,7 +113,7 @@ int __duplicate_descriptor(int fd) {
 
 	if (is_fd_valid(fd)) {
 		// get free descriptor
-		for (fd2 = 0; fd2 < MAX_OPEN_FILES; ++fd2) {
+		for (fd2 = 3; fd2 < MAX_OPEN_FILES; ++fd2) {
 			if (__fdmap[fd2] == NULL) {
 				__fdmap[fd2] = __fdmap[fd];
 				__fdmap[fd2]->ref_count++;
@@ -125,6 +157,11 @@ int __fd_drop(DescriptorTranslation *map) {
 		int ret = 0;
 
 		switch (map->type) {
+		case VITA_DESCRIPTOR_TTY:
+		{
+			ret = sceIoClose(map->sce_uid);
+			break;
+		}
 		case VITA_DESCRIPTOR_FILE:
 		{
 			ret = sceFiosFHCloseSync(NULL, map->sce_uid);

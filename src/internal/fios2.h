@@ -64,6 +64,7 @@ typedef enum SceFiosOpenFlags
 
 typedef int64_t SceFiosTime;
 
+typedef int32_t SceFiosOp;
 typedef int32_t SceFiosFH;
 typedef int32_t SceFiosDH;
 typedef uint64_t SceFiosDate;

@@ -17,6 +17,9 @@ _ssize_t write(int fd, const void *buf, size_t nbytes) {
 	}
 
 	switch (fdmap->type) {
+	case VITA_DESCRIPTOR_TTY:
+		ret = sceIoWrite(fdmap->sce_uid, buf, nbytes);
+		break;
 	case VITA_DESCRIPTOR_FILE:
 		ret = sceFiosFHWriteSync(NULL, fdmap->sce_uid, buf, nbytes);
 		break;

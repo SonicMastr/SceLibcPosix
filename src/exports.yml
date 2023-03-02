@@ -3,7 +3,7 @@ SceLibcExt:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0x271995a5
+  nid: 0xc7dc7d62
   main:
     start: __module_start
     stop: __module_stop
@@ -16,10 +16,12 @@ SceLibcExt:
       functions:
       - clock_gettime: 0x7063dc5
       - fsync: 0x71617f2
+      - fdopendir: 0x7a07328
       - utimensat: 0x92a8572
       - timer_create: 0xa3ed572
       - readv: 0xc76c8f8
       - statvfs: 0xca75975
+      - opendir: 0xfe90488
       - write: 0x10fd874b
       - futimens: 0x13fac56f
       - timer_gettime: 0x17bacd16
@@ -29,12 +31,16 @@ SceLibcExt:
       - open: 0x2348f998
       - timer_getoverrun: 0x2393ac7f
       - __module_exit_main: 0x2810df9e
+      - basename: 0x2910774c
+      - alphasort: 0x2b6018cb
+      - dirfd: 0x2e254d0a
       - fstatvfs: 0x3068bb8e
       - close: 0x310ff200
       - read: 0x3316348d
       - pclose: 0x3c996558
       - stat: 0x40460da8
       - popen: 0x42bd1122
+      - readdir: 0x4737c584
       - pwrite: 0x481e2dad
       - __module_start: 0x4e7f0530
       - __module_start_main: 0x4fd162e9
@@ -42,10 +48,12 @@ SceLibcExt:
       - writev: 0x5623b24b
       - lstat: 0x58c4a75b
       - fdatasync: 0x5afe8d1e
+      - seekdir: 0x5d6d48d7
       - utime: 0x5f9874bb
       - chdir: 0x694011c8
       - poll: 0x707165e9
       - strnlen: 0x73cc0263
+      - chroot: 0x854eaadd
       - __module_stop_main: 0x8beee427
       - timer_delete: 0x8c3e4926
       - mkdir: 0x95c5007a
@@ -53,6 +61,8 @@ SceLibcExt:
       - at_quick_exit: 0x98d59313
       - __module_exit: 0x98e1e55b
       - getcwd: 0xa00b58e4
+      - rewinddir: 0xa052d7a2
+      - access: 0xa0561fd6
       - fchdir: 0xa07248cc
       - fchmod: 0xa0b6ebb1
       - mempcpy: 0xa1ff5425
@@ -63,13 +73,17 @@ SceLibcExt:
       - __writev: 0xbb03cea6
       - rmdir: 0xbc7430c4
       - pread: 0xc0375cb5
+      - readdir_r: 0xcdd4512a
       - fstat: 0xdb4abd0e
       - atexit: 0xe07a8410
       - chmod: 0xe0fee4c9
+      - scandir: 0xe22005f8
       - fchownat: 0xe25a8c0c
+      - telldir: 0xe77d8149
       - realpath: 0xe7eeff1e
       - utimes: 0xf610c484
       - chown: 0xf92b5215
+      - closedir: 0xfa4403dc
       variables:
       - __cwd: 0x14686f4d
       - _fd_mutex: 0x23c71526

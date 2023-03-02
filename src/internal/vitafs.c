@@ -17,6 +17,8 @@
 #include "vitadescriptor.h"
 #include "vitafs.h"
 
+#include "../dirent/__dirent.h"
+
 #define MAX_PATH_LENGTH 256
 
 char __cwd[PATH_MAX] = { 0 };
@@ -280,4 +282,19 @@ void __scestat_to_stat(struct SceFiosStat *in, struct stat *out) {
 
 	sceFiosDateToSceDateTime(in->st_ctime, &aux_date);
 	sceRtcGetTime_t(&aux_date, &out->st_ctime);
+}
+
+DIR *__opendir_common(int fd) {
+	DIR *dirp = calloc(1, sizeof(DIR));
+
+	if (!dirp) {
+		errno = ENOMEM;
+		return NULL;
+	}
+
+	dirp->fd = fd;
+	dirp->index = 0;
+
+	errno = 0;
+	return dirp;
 }

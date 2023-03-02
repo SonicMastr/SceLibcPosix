@@ -3,7 +3,7 @@ SceLibcExt:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0xa61eda7d
+  nid: 0xbd99635e
   main:
     start: __module_start
     stop: __module_stop
@@ -20,6 +20,7 @@ SceLibcExt:
       - shutdown: 0x8434ba9
       - utimensat: 0x92a8572
       - timer_create: 0xa3ed572
+      - sleep: 0xafa5bb5
       - readv: 0xc76c8f8
       - statvfs: 0xca75975
       - recvfrom: 0xf204a61

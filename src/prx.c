@@ -3,7 +3,6 @@
 
 int module_start(int argc, const void *args) {
 	_init_fd();
-	__init_cwd();
 	__init_fios2();
 	return 0;
 }

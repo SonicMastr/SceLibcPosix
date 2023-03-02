@@ -34,12 +34,12 @@ int fchownat(int fd, const char *path, uid_t owner, gid_t group, int flag) {
 		break;
 	}
 
+	__fd_drop(fdmap);
+
 	if (ret < 0) {
-		__fd_drop(fdmap);
 		errno = __sce_errno_to_errno(ret, ERROR_FIOS);
 		return -1;
 	}
 
-	__fd_drop(fdmap);
 	return 0;
 }

@@ -27,7 +27,7 @@ static void ifree(char **ptrp) {
 	free(*ptrp);
 }
 
-ssize_t __readv(int fd, const struct iovec *vector, int count) {
+hidden ssize_t __readv(int fd, const struct iovec *vector, int count) {
 	/* Find the total number of bytes to be read.  */
 	size_t bytes = 0;
 	for (int i = 0; i < count; ++i) {

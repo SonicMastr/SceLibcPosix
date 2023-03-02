@@ -26,26 +26,11 @@ void __hidden exit_func(void) {
 int main(int argc, char const *argv[]) {
 	int ret;
 
-	char output[256] __attribute__((__aligned__(64)));
-	SceFiosSize outputSize = 0;
-	SceFiosSize inputSize = 0;
-	SceFiosSize result = 0;
-	SceFiosFH writeFH = 0;
-	SceFiosOp op[1] = { 0 };
-	SceFiosOpenParams openParams = SCE_FIOS_OPENPARAMS_INITIALIZER;
-
-	openParams.openFlags = SCE_FIOS_O_WRONLY;
-
-	strncpy(output, "SAMPLE OUTPUT\n", 256);
-	outputSize = (SceFiosSize)(strlen(output) + 1);
-
-	int fd = open("app0:sce_module/SceLibcExt.suprx", O_RDWR | O_CREAT);
-
-	printf("fd %d\nerror: %d\n", fd, errno);
-
-	ret = read(fd, NULL, 3);
-
-	printf("ret 0x%08X\nerror: %d\n", ret, errno);
+	int elf;
+	FILE *file = fopen("/sce_module/SceLibcExt.suprx", "rb");
+	fread(&elf, 4, 1, file);
+	printf("elf out: 0x%08X\n", elf);
+	fclose(file);
 
 	atexit(exit_func);
 	exit(EXIT_SUCCESS);

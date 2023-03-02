@@ -17,7 +17,7 @@ add_executable(test $<TARGET_OBJECTS:crt0_main>
     ${sources}
 )
 
-add_dependencies(test SceLibcExt)
+add_dependencies(test SceLibcPosix)
 
 target_compile_options(test PRIVATE -fno-lto -fpermissive)
 
@@ -27,13 +27,13 @@ target_link_libraries(test PRIVATE
     -nostdlib
     -nostartfiles
     -nodefaultlibs
-    SceLibcExt_stub_weak
+    SceLibcPosix_stub_weak
     SceRtc_stub
     SceNet_stub_weak
     SceProcessmgr_stub
     SceKernelThreadMgr_stub
+    SceLibcExt_stub_weak
     SceFios2_stub_weak
-    SceLibc_stub_weak
     SceLibKernel_stub
 )
 
@@ -44,7 +44,7 @@ vita_create_self(eboot.bin test PRIVATE
 add_custom_target(devkit-launch
     DEPENDS eboot.bin-self
     COMMAND mkdir -p "${CMAKE_CURRENT_BINARY_DIR}/sce_module"
-    COMMAND cp "$ENV{VITASDK}/arm-vita-eabi/modules/SceLibcExt.suprx" "${CMAKE_CURRENT_BINARY_DIR}/sce_module/SceLibcExt.suprx"
+    COMMAND cp "$ENV{VITASDK}/arm-vita-eabi/modules/SceLibcPosix.suprx" "${CMAKE_CURRENT_BINARY_DIR}/sce_module/SceLibcPosix.suprx"
     COMMAND psp2run.exe /c:process /debug /kill /workingDirectory:"${CMAKE_CURRENT_BINARY_DIR}" /elf "${CMAKE_CURRENT_BINARY_DIR}/eboot.bin"
     COMMENT "Launching ${CMAKE_CURRENT_BINARY_DIR}/eboot.bin"
 )

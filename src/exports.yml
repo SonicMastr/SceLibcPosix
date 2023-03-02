@@ -1,18 +1,18 @@
-SceLibcExt:
+SceLibcPosix:
   attributes: 0x0
   version:
     major: 0x1
     minor: 0x1
-  nid: 0xbd99635e
+  nid: 0x899c6857
   main:
     start: __module_start
     stop: __module_stop
     exit: __module_exit
   libraries:
-    SceLibcExt:
+    SceLibcPosix:
       version: 0x1
       syscall: false
-      nid: 0xaf18fba9
+      nid: 0xff552586
       functions:
       - clock_gettime: 0x7063dc5
       - fsync: 0x71617f2
@@ -33,7 +33,6 @@ SceLibcExt:
       - sendto: 0x182364da
       - clock_settime: 0x186bdea3
       - inet_aton: 0x1901c30d
-      - __readv: 0x19e24099
       - inet_ntop: 0x1e760bc2
       - stpcpy: 0x1ea1788e
       - clock_getres: 0x227c8b8e
@@ -101,10 +100,10 @@ SceLibcExt:
       - strlcat: 0xb6b25617
       - __module_stop: 0xb72bcc46
       - sendmsg: 0xb7641134
-      - __writev: 0xbb03cea6
       - rmdir: 0xbc7430c4
       - pread: 0xc0375cb5
       - accept: 0xc125d039
+      - fopen: 0xc471fe99
       - readdir_r: 0xcdd4512a
       - getsockname: 0xda346f1a
       - fstat: 0xdb4abd0e

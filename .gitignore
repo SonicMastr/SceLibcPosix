@@ -53,3 +53,5 @@ dkms.conf
 
 build
 .vscode
+SceLibcExt/*.S
+SceLibcExt/*.txt

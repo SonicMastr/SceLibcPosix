@@ -32,7 +32,7 @@ static void ifree(char **ptrp) {
 	 The data is written in the order specified.
 	 Operates just like 'write' (see <unistd.h>) except that the data
 	 are taken from VECTOR instead of a contiguous buffer.  */
-ssize_t __writev(int fd, const struct iovec *vector, int count) {
+hidden ssize_t __writev(int fd, const struct iovec *vector, int count) {
 	/* Find the total number of bytes to be written.  */
 	size_t bytes = 0;
 	for (int i = 0; i < count; ++i) {

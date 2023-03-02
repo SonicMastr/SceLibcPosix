@@ -8,20 +8,24 @@ if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
   endif()
 endif()
 
-project(libSceLibcExt)
+project(libSceLibcPosix)
 include("$ENV{VITASDK}/share/vita.cmake" REQUIRED)
 
 file(GLOB_RECURSE sources *.c)
 
-add_executable(SceLibcExt $<TARGET_OBJECTS:crt0_module>
+add_executable(SceLibcPosix $<TARGET_OBJECTS:crt0_module>
     ${sources}
 )
 
-target_compile_options(SceLibcExt PRIVATE -fno-lto)
+add_dependencies(SceLibcPosix SceLibc_stub_weak)
 
-target_include_directories(SceLibcExt PRIVATE ../include include internal)
+target_compile_options(SceLibcPosix PRIVATE -fno-lto)
 
-target_link_libraries(SceLibcExt PRIVATE
+target_include_directories(SceLibcPosix PRIVATE ../include include internal)
+
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/SceLibcExt)
+
+target_link_libraries(SceLibcPosix PRIVATE
     -nostdlib
     -nostartfiles
     -nodefaultlibs
@@ -33,23 +37,23 @@ target_link_libraries(SceLibcExt PRIVATE
     SceKernelThreadMgr_stub
     SceIofilemgr_stub_weak
     SceFios2_stub_weak
-    SceLibc_stub_weak
+    SceLibcExt_stub_weak
     SceLibKernel_stub
     gcc
 )
 
-vita_create_self(SceLibcExt.suprx SceLibcExt PRIVATE
+vita_create_self(SceLibcPosix.suprx SceLibcPosix PRIVATE
     CONFIG exports.yml
     UNSAFE
 )
 
-vita_create_stubs(stubs SceLibcExt ${CMAKE_CURRENT_SOURCE_DIR}/exports.yml)
+vita_create_stubs(stubs SceLibcPosix ${CMAKE_CURRENT_SOURCE_DIR}/exports.yml)
 
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/stubs/
     DESTINATION lib
     FILES_MATCHING PATTERN "*.a"
 )
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/SceLibcExt.suprx
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/SceLibcPosix.suprx
     DESTINATION "$ENV{VITASDK}/arm-vita-eabi/modules"
 )

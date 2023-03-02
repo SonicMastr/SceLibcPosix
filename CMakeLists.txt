@@ -10,8 +10,10 @@ endif()
 
 include("$ENV{VITASDK}/share/vita.cmake" REQUIRED)
 
-project(SceLibcExt)
+project(SceLibcPosix)
 
+
+add_subdirectory(SceLibcExt)
 add_subdirectory(crt)
 add_subdirectory(src)
-#add_subdirectory(test)
+add_subdirectory(test)

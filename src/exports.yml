@@ -3,7 +3,7 @@ SceLibcExt:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0xb7c2a9d3
+  nid: 0xa61eda7d
   main:
     start: __module_start
     stop: __module_stop
@@ -34,6 +34,7 @@ SceLibcExt:
       - inet_aton: 0x1901c30d
       - __readv: 0x19e24099
       - inet_ntop: 0x1e760bc2
+      - stpcpy: 0x1ea1788e
       - clock_getres: 0x227c8b8e
       - open: 0x2348f998
       - timer_getoverrun: 0x2393ac7f
@@ -112,6 +113,7 @@ SceLibcExt:
       - getpriority: 0xe21637cc
       - scandir: 0xe22005f8
       - fchownat: 0xe25a8c0c
+      - isatty: 0xe28de29d
       - telldir: 0xe77d8149
       - realpath: 0xe7eeff1e
       - bind: 0xf08dd851

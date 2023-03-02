@@ -21,10 +21,10 @@ int fstat(int fd, struct stat *st) {
 
 	switch (fdmap->type) {
 	case VITA_DESCRIPTOR_DIRECTORY:
-		ret = sceFiosSyncSync(NULL, sceFiosDHGetPath(fdmap->sce_uid), 0);
+		ret = sceFiosStatSync(NULL, sceFiosDHGetPath(fdmap->sce_uid), &stat);
 		break;
 	case VITA_DESCRIPTOR_FILE:
-		ret = sceFiosFHSyncSync(NULL, fdmap->sce_uid);
+		ret = sceFiosFHStatSync(NULL, fdmap->sce_uid, &stat);
 		break;
 	case VITA_DESCRIPTOR_SOCKET:
 	case VITA_DESCRIPTOR_PIPE:

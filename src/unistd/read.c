@@ -8,7 +8,7 @@
 #include "vitaerror.h"
 #include "fios2.h"
 
-_ssize_t read(int fd, void *ptr, size_t len) {
+ssize_t read(int fd, void *ptr, size_t len) {
 	int ret;
 	int type = ERROR_GENERIC;
 	DescriptorTranslation *fdmap = __fd_grab(fd);

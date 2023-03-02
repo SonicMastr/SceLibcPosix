@@ -19,7 +19,7 @@ add_executable(SceLibcExt $<TARGET_OBJECTS:crt0_module>
 
 target_compile_options(SceLibcExt PRIVATE -fno-lto)
 
-target_include_directories(SceLibcExt PRIVATE include internal)
+target_include_directories(SceLibcExt PRIVATE ../include include internal)
 
 target_link_libraries(SceLibcExt PRIVATE
     -nostdlib

@@ -1,7 +1,7 @@
 version: 2
 firmware: 3.60
 modules:
-  SceLibc:
+  SceLibcExt:
     nid: 0x43FBA801
     libraries:
       SceLibc:

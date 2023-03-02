@@ -23,7 +23,7 @@ target_compile_options(SceLibcPosix PRIVATE -fno-lto)
 
 target_include_directories(SceLibcPosix PRIVATE ../include include internal)
 
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/SceLibcExt)
+link_directories(${CMAKE_BINARY_DIR}/SceLibcExt)
 
 target_link_libraries(SceLibcPosix PRIVATE
     -nostdlib
@@ -52,6 +52,11 @@ vita_create_stubs(stubs SceLibcPosix ${CMAKE_CURRENT_SOURCE_DIR}/exports.yml)
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/stubs/
     DESTINATION lib
     FILES_MATCHING PATTERN "*.a"
+)
+
+install(FILES ${CMAKE_BINARY_DIR}/SceLibcExt/libSceLibcExt_stub.a
+    ${CMAKE_BINARY_DIR}/SceLibcExt/libSceLibcExt_stub_weak.a
+    DESTINATION lib
 )
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/SceLibcPosix.suprx

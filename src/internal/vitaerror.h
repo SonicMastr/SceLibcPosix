@@ -28,7 +28,8 @@ DEALINGS IN THE SOFTWARE.
 typedef enum
 {
 	ERROR_GENERIC,
-	ERROR_SOCKET
+	ERROR_SOCKET,
+	ERROR_FIOS
 } ErrorType;
 
 hidden int __scenet_errno_to_errno(int sce_errno);

@@ -23,6 +23,7 @@ _ssize_t read(int fd, void *ptr, size_t len) {
 		ret = sceIoRead(fdmap->sce_uid, ptr, len);
 		break;
 	case VITA_DESCRIPTOR_FILE:
+		type = ERROR_FIOS;
 		ret = sceFiosFHReadSync(NULL, fdmap->sce_uid, ptr, len);
 		break;
 	case VITA_DESCRIPTOR_SOCKET:

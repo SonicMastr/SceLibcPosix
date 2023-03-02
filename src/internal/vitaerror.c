@@ -23,8 +23,12 @@ DEALINGS IN THE SOFTWARE.
 
 #include "vitaerror.h"
 #include "vitadescriptor.h"
+#include "fios2.h"
 
 int __sce_errno_to_errno(int sce_errno, int type) {
+	if (type == ERROR_FIOS) {
+		return __scefios2_errno_to_errno(sce_errno);
+	}
 	if (type == ERROR_SOCKET) {
 		return __scenet_errno_to_errno(sce_errno);
 	}
@@ -33,6 +37,52 @@ int __sce_errno_to_errno(int sce_errno, int type) {
 
 int __make_sce_errno(int posix_errno) {
 	return SCE_ERRNO_NONE | posix_errno;
+}
+
+// From SceLibc
+int __scefios2_errno_to_errno(int sce_errno) {
+	switch (sce_errno) {
+	case SCE_FIOS_ERROR_ACCESS:
+		return EPERM;
+	case SCE_FIOS_ERROR_BAD_PATH:
+		return ENOENT;
+	case SCE_FIOS_ERROR_UNIMPLEMENTED:
+	case SCE_FIOS_ERROR_CANT_ALLOCATE_OP:
+	case SCE_FIOS_ERROR_CANT_ALLOCATE_FH:
+	case SCE_FIOS_ERROR_CANT_ALLOCATE_DH:
+	case SCE_FIOS_ERROR_CANT_ALLOCATE_CHUNK:
+	case SCE_FIOS_ERROR_BAD_ARCHIVE:
+		return EIO;
+	case SCE_FIOS_ERROR_BAD_FH:
+	case SCE_FIOS_ERROR_BAD_DH:
+		return EBADF;
+	case SCE_FIOS_ERROR_NOT_A_DIRECTORY:
+		return ENOTDIR;
+	case SCE_FIOS_ERROR_READ_ONLY:
+		return EROFS;
+	case SCE_FIOS_ERROR_EOF:
+		return ERANGE;
+	case SCE_FIOS_ERROR_MEDIA_GONE:
+		return ENODEV;
+	case SCE_FIOS_ERROR_BUSY:
+		return EBUSY;
+	case SCE_FIOS_ERROR_ALREADY_EXISTS:
+		return EEXIST;
+	case SCE_FIOS_ERROR_CANCELLED:
+		return EINTR;
+	case SCE_FIOS_ERROR_PATH_TOO_LONG:
+		return ENAMETOOLONG;
+	case SCE_FIOS_ERROR_BAD_PTR:
+	case SCE_FIOS_ERROR_BAD_OFFSET:
+	case SCE_FIOS_ERROR_BAD_SIZE:
+	case SCE_FIOS_ERROR_BAD_IOVCNT:
+	case SCE_FIOS_ERROR_BAD_ALIGNMENT:
+	case SCE_FIOS_ERROR_BAD_FLAGS:
+	case SCE_FIOS_ERROR_BAD_RESOLVE_TYPE:
+		return EINVAL;
+	default:
+		return sce_errno;
+	}
 }
 
 int __scenet_errno_to_errno(int sce_errno) {

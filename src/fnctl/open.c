@@ -46,7 +46,7 @@ int open(const char *filename, int flags, ...) {
 
 	if (ret < 0) {
 		free(full_path);
-		errno = __sce_errno_to_errno(ret, ERROR_GENERIC);
+		errno = __sce_errno_to_errno(ret, ERROR_FIOS);
 		return -1;
 	}
 

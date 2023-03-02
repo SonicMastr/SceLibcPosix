@@ -17,7 +17,7 @@ add_executable(SceLibcExt $<TARGET_OBJECTS:crt0_module>
     ${sources}
 )
 
-target_compile_options(SceLibcExt PRIVATE -fno-lto -fpermissive)
+target_compile_options(SceLibcExt PRIVATE -fno-lto)
 
 target_include_directories(SceLibcExt PRIVATE include internal)
 

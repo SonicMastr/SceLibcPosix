@@ -241,5 +241,6 @@ int sceFiosIOFilterAdd(int index, void *pFilterCallback, void *pFilterContext);
 void sceFiosIOFilterCache();
 
 SceDateTime *sceFiosDateToSceDateTime(SceFiosDate date, SceDateTime *sce_date);
+SceFiosDate sceFiosDateFromSceDateTime(const SceDateTime *sce_date);
 
 #endif

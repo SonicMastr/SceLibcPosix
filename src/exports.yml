@@ -3,7 +3,7 @@ SceLibcExt:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0xe904af3a
+  nid: 0x141f787d
   main:
     start: __module_start
     stop: __module_stop
@@ -14,10 +14,18 @@ SceLibcExt:
       syscall: false
       nid: 0xaf18fba9
       functions:
+      - clock_gettime: 0x7063dc5
       - fsync: 0x71617f2
+      - utimensat: 0x92a8572
+      - timer_create: 0xa3ed572
       - statvfs: 0xca75975
       - write: 0x10fd874b
+      - futimens: 0x13fac56f
+      - timer_gettime: 0x17bacd16
+      - clock_settime: 0x186bdea3
+      - clock_getres: 0x227c8b8e
       - open: 0x2348f998
+      - timer_getoverrun: 0x2393ac7f
       - __module_exit_main: 0x2810df9e
       - fstatvfs: 0x3068bb8e
       - close: 0x310ff200
@@ -25,17 +33,23 @@ SceLibcExt:
       - stat: 0x40460da8
       - __module_start: 0x4e7f0530
       - __module_start_main: 0x4fd162e9
+      - timer_settime: 0x53280d04
       - lstat: 0x58c4a75b
       - fdatasync: 0x5afe8d1e
+      - utime: 0x5f9874bb
       - chdir: 0x694011c8
+      - poll: 0x707165e9
       - strnlen: 0x73cc0263
       - __module_stop_main: 0x8beee427
+      - timer_delete: 0x8c3e4926
       - mkdir: 0x95c5007a
+      - nanosleep: 0x9857a7f2
       - at_quick_exit: 0x98d59313
       - __module_exit: 0x98e1e55b
       - getcwd: 0xa00b58e4
       - fchdir: 0xa07248cc
       - fchmod: 0xa0b6ebb1
+      - select: 0xb1a36d25
       - strlcpy: 0xb53bd519
       - strlcat: 0xb6b25617
       - __module_stop: 0xb72bcc46
@@ -45,6 +59,7 @@ SceLibcExt:
       - chmod: 0xe0fee4c9
       - fchownat: 0xe25a8c0c
       - realpath: 0xe7eeff1e
+      - utimes: 0xf610c484
       - chown: 0xf92b5215
       variables:
       - __cwd: 0x14686f4d

@@ -7,8 +7,6 @@
 #include <sys/dirent.h>
 #include <sys/stat.h>
 #include <sys/statvfs.h>
-#include <sys/syslimits.h>
-#include <limits.h>
 #include <string.h>
 
 #include <psp2/types.h>
@@ -18,11 +16,10 @@
 #include "vitaerror.h"
 #include "vitadescriptor.h"
 #include "vitafs.h"
-#include "fios2.h"
 
 #define MAX_PATH_LENGTH 256
 
-static char __cwd[PATH_MAX] = { 0 };
+char __cwd[PATH_MAX] = { 0 };
 
 // Fios2 init vars
 int64_t g_OpStorage[SCE_FIOS_OP_STORAGE_SIZE(64, MAX_PATH_LENGTH) / sizeof(int64_t) + 1];
@@ -263,4 +260,24 @@ int _fcntl2sony(int flags) {
 	if (flags & O_EXCL)
 		out |= SCE_O_EXCL;
 	return out;
+}
+
+void __scestat_to_stat(struct SceFiosStat *in, struct stat *out) {
+	memset(out, 0, sizeof(*out));
+	out->st_size = in->st_size;
+	if (SCE_S_ISREG(in->st_mode))
+		out->st_mode |= _IFREG;
+	if (SCE_S_ISDIR(in->st_mode))
+		out->st_mode |= _IFDIR;
+
+	SceDateTime aux_date = { 0 };
+
+	sceFiosDateToSceDateTime(in->st_atime, &aux_date);
+	sceRtcGetTime_t(&aux_date, &out->st_atime);
+
+	sceFiosDateToSceDateTime(in->st_mtime, &aux_date);
+	sceRtcGetTime_t(&aux_date, &out->st_mtime);
+
+	sceFiosDateToSceDateTime(in->st_ctime, &aux_date);
+	sceRtcGetTime_t(&aux_date, &out->st_ctime);
 }

@@ -3,7 +3,7 @@ SceLibcExt:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0xfe592db1
+  nid: 0xe904af3a
   main:
     start: __module_start
     stop: __module_stop
@@ -14,22 +14,40 @@ SceLibcExt:
       syscall: false
       nid: 0xaf18fba9
       functions:
+      - fsync: 0x71617f2
+      - statvfs: 0xca75975
       - write: 0x10fd874b
       - open: 0x2348f998
       - __module_exit_main: 0x2810df9e
+      - fstatvfs: 0x3068bb8e
       - close: 0x310ff200
       - read: 0x3316348d
+      - stat: 0x40460da8
       - __module_start: 0x4e7f0530
       - __module_start_main: 0x4fd162e9
+      - lstat: 0x58c4a75b
+      - fdatasync: 0x5afe8d1e
+      - chdir: 0x694011c8
       - strnlen: 0x73cc0263
       - __module_stop_main: 0x8beee427
+      - mkdir: 0x95c5007a
       - at_quick_exit: 0x98d59313
       - __module_exit: 0x98e1e55b
+      - getcwd: 0xa00b58e4
+      - fchdir: 0xa07248cc
+      - fchmod: 0xa0b6ebb1
       - strlcpy: 0xb53bd519
       - strlcat: 0xb6b25617
       - __module_stop: 0xb72bcc46
+      - rmdir: 0xbc7430c4
+      - fstat: 0xdb4abd0e
       - atexit: 0xe07a8410
+      - chmod: 0xe0fee4c9
+      - fchownat: 0xe25a8c0c
+      - realpath: 0xe7eeff1e
+      - chown: 0xf92b5215
       variables:
+      - __cwd: 0x14686f4d
       - _fd_mutex: 0x23c71526
       - g_ChunkStorage: 0x5b0241f7
       - __fdmap: 0x801038aa

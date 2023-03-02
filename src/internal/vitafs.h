@@ -21,6 +21,10 @@ DEALINGS IN THE SOFTWARE.
 #define _VITAFS_H
 
 #include "features.h"
+#include <sys/syslimits.h>
+#include "fios2.h"
+
+extern char __cwd[PATH_MAX];
 
 hidden void __init_fios2(void);
 hidden int __get_drive(const char *path);
@@ -29,5 +33,6 @@ hidden char *__resolve_path(const char *path, char *resolved);
 hidden char *__realpath(const char *path);
 hidden int __is_dir(const char *path);
 hidden int _fcntl2sony(int flags);
+hidden void __scestat_to_stat(struct SceFiosStat *in, struct stat *out);
 
 #endif

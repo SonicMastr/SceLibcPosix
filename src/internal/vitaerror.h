@@ -32,6 +32,7 @@ typedef enum
 	ERROR_FIOS
 } ErrorType;
 
+hidden int __scefios2_errno_to_errno(int sce_errno);
 hidden int __scenet_errno_to_errno(int sce_errno);
 hidden int __sce_errno_to_errno(int sce_errno, int type);
 hidden int __make_sce_errno(int posix_errno);

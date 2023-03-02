@@ -3,7 +3,7 @@ SceLibcExt:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0xc7dc7d62
+  nid: 0xb7c2a9d3
   main:
     start: __module_start
     stop: __module_stop
@@ -17,70 +17,104 @@ SceLibcExt:
       - clock_gettime: 0x7063dc5
       - fsync: 0x71617f2
       - fdopendir: 0x7a07328
+      - shutdown: 0x8434ba9
       - utimensat: 0x92a8572
       - timer_create: 0xa3ed572
       - readv: 0xc76c8f8
       - statvfs: 0xca75975
+      - recvfrom: 0xf204a61
       - opendir: 0xfe90488
       - write: 0x10fd874b
+      - inet_addr: 0x119d48a8
       - futimens: 0x13fac56f
+      - recv: 0x16623bbc
       - timer_gettime: 0x17bacd16
+      - sendto: 0x182364da
       - clock_settime: 0x186bdea3
+      - inet_aton: 0x1901c30d
       - __readv: 0x19e24099
+      - inet_ntop: 0x1e760bc2
       - clock_getres: 0x227c8b8e
       - open: 0x2348f998
       - timer_getoverrun: 0x2393ac7f
+      - send: 0x27ce1d1b
       - __module_exit_main: 0x2810df9e
       - basename: 0x2910774c
       - alphasort: 0x2b6018cb
       - dirfd: 0x2e254d0a
+      - usleep: 0x2f9d2dd3
       - fstatvfs: 0x3068bb8e
       - close: 0x310ff200
       - read: 0x3316348d
+      - inet_pton: 0x3ba7a081
       - pclose: 0x3c996558
+      - pipe: 0x40082947
+      - readlink: 0x402eb752
       - stat: 0x40460da8
       - popen: 0x42bd1122
+      - _net_init: 0x435ec343
+      - inet_ntoa: 0x45162bb3
       - readdir: 0x4737c584
+      - socket: 0x47dd56c2
       - pwrite: 0x481e2dad
       - __module_start: 0x4e7f0530
+      - ftruncate: 0x4ea5c5e1
       - __module_start_main: 0x4fd162e9
       - timer_settime: 0x53280d04
       - writev: 0x5623b24b
       - lstat: 0x58c4a75b
+      - truncate: 0x5a3a4ee4
+      - connect: 0x5a638a12
       - fdatasync: 0x5afe8d1e
+      - unlink: 0x5baaa7e4
       - seekdir: 0x5d6d48d7
       - utime: 0x5f9874bb
       - chdir: 0x694011c8
+      - listen: 0x6f8860eb
       - poll: 0x707165e9
       - strnlen: 0x73cc0263
+      - getsockopt: 0x7bb8310e
       - chroot: 0x854eaadd
+      - creat: 0x87d8ed8a
+      - getpeername: 0x88c61890
       - __module_stop_main: 0x8beee427
       - timer_delete: 0x8c3e4926
+      - recvmsg: 0x933d53f5
       - mkdir: 0x95c5007a
       - nanosleep: 0x9857a7f2
       - at_quick_exit: 0x98d59313
       - __module_exit: 0x98e1e55b
+      - dup: 0x9eb62034
       - getcwd: 0xa00b58e4
       - rewinddir: 0xa052d7a2
       - access: 0xa0561fd6
       - fchdir: 0xa07248cc
       - fchmod: 0xa0b6ebb1
       - mempcpy: 0xa1ff5425
+      - setpriority: 0xac31102f
+      - setsockopt: 0xad0a58ee
       - select: 0xb1a36d25
+      - link: 0xb1b1bdb4
       - strlcpy: 0xb53bd519
       - strlcat: 0xb6b25617
       - __module_stop: 0xb72bcc46
+      - sendmsg: 0xb7641134
       - __writev: 0xbb03cea6
       - rmdir: 0xbc7430c4
       - pread: 0xc0375cb5
+      - accept: 0xc125d039
       - readdir_r: 0xcdd4512a
+      - getsockname: 0xda346f1a
       - fstat: 0xdb4abd0e
       - atexit: 0xe07a8410
       - chmod: 0xe0fee4c9
+      - nice: 0xe186022d
+      - getpriority: 0xe21637cc
       - scandir: 0xe22005f8
       - fchownat: 0xe25a8c0c
       - telldir: 0xe77d8149
       - realpath: 0xe7eeff1e
+      - bind: 0xf08dd851
       - utimes: 0xf610c484
       - chown: 0xf92b5215
       - closedir: 0xfa4403dc

@@ -26,8 +26,10 @@ target_link_libraries(SceLibcExt PRIVATE
     -nostartfiles
     -nodefaultlibs
     SceRtc_stub
+    SceNetCtl_stub_weak
     SceNet_stub_weak
     SceProcessmgr_stub
+    SceSysmodule_stub
     SceKernelThreadMgr_stub
     SceIofilemgr_stub_weak
     SceFios2_stub_weak

@@ -17,7 +17,7 @@ add_executable(SceLibcPosix $<TARGET_OBJECTS:crt0_module>
     ${sources}
 )
 
-add_dependencies(SceLibcPosix SceLibc_stub_weak)
+add_dependencies(SceLibcPosix SceLibcExt_stub_weak)
 
 target_compile_options(SceLibcPosix PRIVATE -fno-lto)
 

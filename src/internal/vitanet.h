@@ -20,8 +20,10 @@ DEALINGS IN THE SOFTWARE.
 #ifndef _VITANET_H_
 #define _VITANET_H_
 
+#include "features.h"
 #include <psp2/net/net.h>
-int _net_init();
+
+hidden int _net_init();
 
 #define scenet_errno (*sceNetErrnoLoc())
 

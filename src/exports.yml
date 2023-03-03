@@ -3,7 +3,7 @@ SceLibcPosix:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0x899c6857
+  nid: 0xfe6618dc
   main:
     start: __module_start
     stop: __module_stop
@@ -27,6 +27,7 @@ SceLibcPosix:
       - opendir: 0xfe90488
       - write: 0x10fd874b
       - inet_addr: 0x119d48a8
+      - setgrent: 0x13f86819
       - futimens: 0x13fac56f
       - recv: 0x16623bbc
       - timer_gettime: 0x17bacd16
@@ -35,29 +36,40 @@ SceLibcPosix:
       - inet_aton: 0x1901c30d
       - inet_ntop: 0x1e760bc2
       - stpcpy: 0x1ea1788e
+      - seteuid: 0x1fd0a857
       - clock_getres: 0x227c8b8e
       - open: 0x2348f998
       - timer_getoverrun: 0x2393ac7f
+      - setegid: 0x24486887
+      - setsid: 0x24dc5b7c
+      - getgrent: 0x2657bf08
       - send: 0x27ce1d1b
       - __module_exit_main: 0x2810df9e
       - basename: 0x2910774c
       - alphasort: 0x2b6018cb
       - dirfd: 0x2e254d0a
       - usleep: 0x2f9d2dd3
+      - setrlimit: 0x300f4cf8
       - fstatvfs: 0x3068bb8e
       - close: 0x310ff200
+      - getrusage: 0x32fe8cd9
       - read: 0x3316348d
+      - pathconf: 0x35df7fdc
+      - getgrnam: 0x38accbbe
+      - gai_strerror: 0x3b008c4a
       - inet_pton: 0x3ba7a081
       - pclose: 0x3c996558
       - pipe: 0x40082947
       - readlink: 0x402eb752
       - stat: 0x40460da8
       - popen: 0x42bd1122
-      - _net_init: 0x435ec343
       - inet_ntoa: 0x45162bb3
       - readdir: 0x4737c584
       - socket: 0x47dd56c2
       - pwrite: 0x481e2dad
+      - setgid: 0x49a65df3
+      - getsid: 0x4c1f64bf
+      - getgroups: 0x4c7c1dcf
       - __module_start: 0x4e7f0530
       - ftruncate: 0x4ea5c5e1
       - __module_start_main: 0x4fd162e9
@@ -70,41 +82,66 @@ SceLibcPosix:
       - unlink: 0x5baaa7e4
       - seekdir: 0x5d6d48d7
       - utime: 0x5f9874bb
+      - getrlimit: 0x60668a4f
+      - getservbyname: 0x63aff970
+      - freeaddrinfo: 0x6492e6dc
+      - inet_lnaof: 0x690dacc4
       - chdir: 0x694011c8
+      - getegid: 0x6c83c18a
       - listen: 0x6f8860eb
+      - initgroups: 0x700e8f2f
       - poll: 0x707165e9
       - strnlen: 0x73cc0263
       - getsockopt: 0x7bb8310e
+      - fpathconf: 0x7cb72af5
+      - dirname: 0x7cd4f2de
       - chroot: 0x854eaadd
+      - inet_makeaddr: 0x85cdf80b
       - creat: 0x87d8ed8a
       - getpeername: 0x88c61890
       - __module_stop_main: 0x8beee427
       - timer_delete: 0x8c3e4926
       - recvmsg: 0x933d53f5
+      - getentropy: 0x9595ae1f
       - mkdir: 0x95c5007a
       - nanosleep: 0x9857a7f2
       - at_quick_exit: 0x98d59313
       - __module_exit: 0x98e1e55b
+      - inet_network: 0x9b568fb8
+      - endgrent: 0x9b6fd4aa
+      - getaddrinfo: 0x9bb5b421
+      - setregid: 0x9da5fc0a
       - dup: 0x9eb62034
+      - strfmon_l: 0x9f2d0434
       - getcwd: 0xa00b58e4
       - rewinddir: 0xa052d7a2
       - access: 0xa0561fd6
       - fchdir: 0xa07248cc
       - fchmod: 0xa0b6ebb1
       - mempcpy: 0xa1ff5425
+      - gethostname: 0xa47b68db
+      - gethostbyname: 0xa5119b58
+      - setpgrp: 0xa522abff
+      - geteuid: 0xa8d76df4
       - setpriority: 0xac31102f
       - setsockopt: 0xad0a58ee
+      - inet_netof: 0xae65d021
       - select: 0xb1a36d25
       - link: 0xb1b1bdb4
+      - strfmon: 0xb4bbb2e9
       - strlcpy: 0xb53bd519
       - strlcat: 0xb6b25617
       - __module_stop: 0xb72bcc46
       - sendmsg: 0xb7641134
+      - sethostname: 0xb948c2bd
+      - getgid: 0xbbeeb9e9
       - rmdir: 0xbc7430c4
       - pread: 0xc0375cb5
       - accept: 0xc125d039
       - fopen: 0xc471fe99
+      - setgroups: 0xc8c109e5
       - readdir_r: 0xcdd4512a
+      - sysconf: 0xcf47ee51
       - getsockname: 0xda346f1a
       - fstat: 0xdb4abd0e
       - atexit: 0xe07a8410
@@ -114,11 +151,17 @@ SceLibcPosix:
       - scandir: 0xe22005f8
       - fchownat: 0xe25a8c0c
       - isatty: 0xe28de29d
+      - gethostbyaddr: 0xe72717c6
       - telldir: 0xe77d8149
       - realpath: 0xe7eeff1e
+      - getgrgid: 0xe8ae6377
+      - setreuid: 0xe9d1ceb8
+      - getuid: 0xef011c8d
       - bind: 0xf08dd851
+      - setuid: 0xf59e1c02
       - utimes: 0xf610c484
       - chown: 0xf92b5215
+      - setpgid: 0xf98c98ca
       - closedir: 0xfa4403dc
       variables:
       - __cwd: 0x14686f4d

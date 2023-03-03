@@ -39,7 +39,6 @@ static __inline int __isspace(int _c) {
 #if defined(_POSIX_SOURCE) || defined(_POSIX_C_SOURCE) || defined(_XOPEN_SOURCE) || defined(_GNU_SOURCE) || defined(_BSD_SOURCE)
 
 #define __NEED_locale_t
-#include <bits/alltypes.h>
 
 int isalnum_l(int, locale_t);
 int isalpha_l(int, locale_t);

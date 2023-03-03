@@ -26,8 +26,8 @@ char __cwd[PATH_MAX] = { 0 };
 // Fios2 init vars
 int64_t g_OpStorage[SCE_FIOS_OP_STORAGE_SIZE(64, MAX_PATH_LENGTH) / sizeof(int64_t) + 1];
 int64_t g_ChunkStorage[SCE_FIOS_CHUNK_STORAGE_SIZE(1024) / sizeof(int64_t) + 1];
-int64_t g_FHStorage[SCE_FIOS_FH_STORAGE_SIZE(32, MAX_PATH_LENGTH) / sizeof(int64_t) + 1];
-int64_t g_DHStorage[SCE_FIOS_DH_STORAGE_SIZE(8, MAX_PATH_LENGTH) / sizeof(int64_t) + 1];
+int64_t g_FHStorage[SCE_FIOS_FH_STORAGE_SIZE(64, MAX_PATH_LENGTH) / sizeof(int64_t) + 1];
+int64_t g_DHStorage[SCE_FIOS_DH_STORAGE_SIZE(16, MAX_PATH_LENGTH) / sizeof(int64_t) + 1];
 
 void __init_fios2() {
 	SceFiosParams params = SCE_FIOS_PARAMS_INITIALIZER;

@@ -212,7 +212,6 @@ __get_global_locale() {
 	return &__global_locale;
 }
 
-/* Per REENT locale.  This is newlib-internal. */
 _ELIDABLE_INLINE struct __locale_t *
 __get_locale_r(struct _reent *r) {
 #ifdef __HAVE_LOCALE_INFO__

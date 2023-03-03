@@ -20,7 +20,7 @@ int getrlimit(int resource, struct rlimit *rlim) {
 		rlim->rlim_cur = RLIM_INFINITY;
 		rlim->rlim_max = RLIM_INFINITY;
 		return 0;
-	case RLIMIT_DATA: // newlib heap size
+	case RLIMIT_DATA: // SceLibc heap size
 	{
 		unsigned int heap_size = _get_heap_size();
 		rlim->rlim_cur = heap_size;

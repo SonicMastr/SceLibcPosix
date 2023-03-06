@@ -19,6 +19,6 @@ add_subdirectory(SceLibcExt)
 add_subdirectory(crt)
 add_subdirectory(src)
 
-#if(BUILD_TESTS)
+if(BUILD_TESTS)
   add_subdirectory(test)
-#endif()
+endif()

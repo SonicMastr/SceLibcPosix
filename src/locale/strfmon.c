@@ -96,7 +96,7 @@ ssize_t strfmon(char *restrict s, size_t n, const char *restrict fmt, ...) {
 	ssize_t ret;
 
 	va_start(ap, fmt);
-	ret = vstrfmon_l(s, n, __get_current_locale(), fmt, ap);
+	ret = vstrfmon_l(s, n, 0, fmt, ap);
 	va_end(ap);
 
 	return ret;

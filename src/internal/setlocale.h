@@ -207,7 +207,7 @@ extern size_t _wcsnrtombs_l(struct _reent *, char *, const wchar_t **,
 /* In POSIX terms the global locale is the process-wide locale.  Use this
    function to always refer to the global locale. */
 _ELIDABLE_INLINE struct __locale_t *
-__get_global_locale() {
+__get_global_locale__get_global_locale() {
 	extern struct __locale_t __global_locale;
 	return &__global_locale;
 }

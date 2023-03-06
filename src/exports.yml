@@ -3,7 +3,7 @@ SceLibcPosix:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0xfe6618dc
+  nid: 0xad68df3b
   main:
     start: __module_start
     stop: __module_stop
@@ -18,12 +18,15 @@ SceLibcPosix:
       - fsync: 0x71617f2
       - fdopendir: 0x7a07328
       - shutdown: 0x8434ba9
+      - vitasdk_get_tls_data: 0x84c725a
       - utimensat: 0x92a8572
       - timer_create: 0xa3ed572
       - sleep: 0xafa5bb5
       - readv: 0xc76c8f8
       - statvfs: 0xca75975
       - recvfrom: 0xf204a61
+      - clearenv: 0xf85edbb
+      - setlocale: 0xf8ea7a2
       - opendir: 0xfe90488
       - write: 0x10fd874b
       - inet_addr: 0x119d48a8
@@ -31,6 +34,7 @@ SceLibcPosix:
       - futimens: 0x13fac56f
       - recv: 0x16623bbc
       - timer_gettime: 0x17bacd16
+      - ftello: 0x181d7743
       - sendto: 0x182364da
       - clock_settime: 0x186bdea3
       - inet_aton: 0x1901c30d
@@ -47,8 +51,10 @@ SceLibcPosix:
       - __module_exit_main: 0x2810df9e
       - basename: 0x2910774c
       - alphasort: 0x2b6018cb
+      - kill: 0x2bda9b4d
       - dirfd: 0x2e254d0a
       - usleep: 0x2f9d2dd3
+      - __errno: 0x2fc4aff5
       - setrlimit: 0x300f4cf8
       - fstatvfs: 0x3068bb8e
       - close: 0x310ff200
@@ -56,6 +62,7 @@ SceLibcPosix:
       - read: 0x3316348d
       - pathconf: 0x35df7fdc
       - getgrnam: 0x38accbbe
+      - __locale_mb_cur_max: 0x3978d5ba
       - gai_strerror: 0x3b008c4a
       - inet_pton: 0x3ba7a081
       - pclose: 0x3c996558
@@ -63,6 +70,7 @@ SceLibcPosix:
       - readlink: 0x402eb752
       - stat: 0x40460da8
       - popen: 0x42bd1122
+      - unsetenv: 0x436df44a
       - inet_ntoa: 0x45162bb3
       - readdir: 0x4737c584
       - socket: 0x47dd56c2
@@ -85,6 +93,7 @@ SceLibcPosix:
       - getrlimit: 0x60668a4f
       - getservbyname: 0x63aff970
       - freeaddrinfo: 0x6492e6dc
+      - wcsncasecmp: 0x66a32cba
       - inet_lnaof: 0x690dacc4
       - chdir: 0x694011c8
       - getegid: 0x6c83c18a
@@ -95,15 +104,21 @@ SceLibcPosix:
       - getsockopt: 0x7bb8310e
       - fpathconf: 0x7cb72af5
       - dirname: 0x7cd4f2de
+      - getenv: 0x8006d55e
+      - __sinit: 0x8512f0bf
       - chroot: 0x854eaadd
       - inet_makeaddr: 0x85cdf80b
+      - lseek: 0x8694f0ca
       - creat: 0x87d8ed8a
       - getpeername: 0x88c61890
+      - fseeko: 0x8a38b66a
       - __module_stop_main: 0x8beee427
       - timer_delete: 0x8c3e4926
+      - wcscasecmp: 0x8c997f9b
       - recvmsg: 0x933d53f5
       - getentropy: 0x9595ae1f
       - mkdir: 0x95c5007a
+      - putenv: 0x9713a792
       - nanosleep: 0x9857a7f2
       - at_quick_exit: 0x98d59313
       - __module_exit: 0x98e1e55b
@@ -117,21 +132,27 @@ SceLibcPosix:
       - rewinddir: 0xa052d7a2
       - access: 0xa0561fd6
       - fchdir: 0xa07248cc
+      - itoa: 0xa0a7eb79
       - fchmod: 0xa0b6ebb1
       - mempcpy: 0xa1ff5425
+      - random: 0xa441b15f
       - gethostname: 0xa47b68db
       - gethostbyname: 0xa5119b58
       - setpgrp: 0xa522abff
       - geteuid: 0xa8d76df4
+      - vitasdk_delete_thread_reent: 0xabb1d390
       - setpriority: 0xac31102f
       - setsockopt: 0xad0a58ee
       - inet_netof: 0xae65d021
+      - vitasdk_get_pthread_data: 0xb04fe3bf
       - select: 0xb1a36d25
       - link: 0xb1b1bdb4
+      - gettimeofday: 0xb477ef18
       - strfmon: 0xb4bbb2e9
       - strlcpy: 0xb53bd519
       - strlcat: 0xb6b25617
       - __module_stop: 0xb72bcc46
+      - setenv: 0xb75a127f
       - sendmsg: 0xb7641134
       - sethostname: 0xb948c2bd
       - getgid: 0xbbeeb9e9
@@ -142,8 +163,10 @@ SceLibcPosix:
       - setgroups: 0xc8c109e5
       - readdir_r: 0xcdd4512a
       - sysconf: 0xcf47ee51
+      - signal: 0xd041924c
       - getsockname: 0xda346f1a
       - fstat: 0xdb4abd0e
+      - wcslcpy: 0xdcdfb53c
       - atexit: 0xe07a8410
       - chmod: 0xe0fee4c9
       - nice: 0xe186022d
@@ -151,6 +174,7 @@ SceLibcPosix:
       - scandir: 0xe22005f8
       - fchownat: 0xe25a8c0c
       - isatty: 0xe28de29d
+      - raise: 0xe49b5c7a
       - gethostbyaddr: 0xe72717c6
       - telldir: 0xe77d8149
       - realpath: 0xe7eeff1e
@@ -158,14 +182,18 @@ SceLibcPosix:
       - setreuid: 0xe9d1ceb8
       - getuid: 0xef011c8d
       - bind: 0xf08dd851
+      - wcslcat: 0xf5556bef
       - setuid: 0xf59e1c02
       - utimes: 0xf610c484
       - chown: 0xf92b5215
       - setpgid: 0xf98c98ca
       - closedir: 0xfa4403dc
+      - strcasestr: 0xfae59637
       variables:
       - __cwd: 0x14686f4d
       - _fd_mutex: 0x23c71526
+      - environ: 0x4c36748b
+      - _global_impure_ptr: 0x53591cd0
       - g_ChunkStorage: 0x5b0241f7
       - __fdmap: 0x801038aa
       - g_FHStorage: 0x8f4963ae
@@ -174,4 +202,5 @@ SceLibcPosix:
       - __crt0_module_sdk_version_var: 0xc08b0635
       - _tls_region_info: 0xc7cdb72f
       - g_OpStorage: 0xeddf00a4
+      - _impure_ptr: 0xf05c0b9f
       - __dso_handle: 0xf49ad47a

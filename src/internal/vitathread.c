@@ -24,7 +24,6 @@ static void *__getthread_info(int thid, int type) {
 			on_tls = TLS_PTR;
 		else
 			on_tls = TLS_THID_PTR(thid);
-		printf("Type: %d, id: %d, tls: 0x%08X\n", type, thid, on_tls);
 	}
 
 	if (type == PTHREAD_DATA) {

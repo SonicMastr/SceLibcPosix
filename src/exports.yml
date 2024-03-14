@@ -105,7 +105,6 @@ SceLibcPosix:
       - fpathconf: 0x7cb72af5
       - dirname: 0x7cd4f2de
       - getenv: 0x8006d55e
-      - __sinit: 0x8512f0bf
       - chroot: 0x854eaadd
       - inet_makeaddr: 0x85cdf80b
       - lseek: 0x8694f0ca

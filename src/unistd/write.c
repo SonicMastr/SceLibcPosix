@@ -12,9 +12,12 @@ ssize_t write(int fd, const void *buf, size_t nbytes) {
 	int ret = 0;
 	int type = ERROR_GENERIC;
 	DescriptorTranslation *fdmap = __fd_grab(fd);
+	
 	if (!fdmap) {
-		if (0 > sceFiosFHTell(fd)) // C++ is a bit weird
+		if (0 > sceFiosFHTell(fd)) { // C++ is a bit weird
+			errno = EBADF;
 			return -1;
+		}
 		type = ERROR_FIOS;
 		ret = sceFiosFHWriteSync(NULL, fd, buf, nbytes);
 	} else {

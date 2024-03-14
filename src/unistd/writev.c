@@ -75,26 +75,30 @@ ssize_t writev(int fd, const struct iovec *iov, int len) {
 	DescriptorTranslation *fdmap = __fd_grab(fd);
 
 	if (!fdmap) {
-		errno = EBADF;
-		return -1;
-	}
-
-	switch (fdmap->type) {
-	case VITA_DESCRIPTOR_TTY:
-	case VITA_DESCRIPTOR_PIPE:
-	case VITA_DESCRIPTOR_SOCKET:
-		ret = __writev(fdmap->sce_uid, iov, len);
-		break;
-	case VITA_DESCRIPTOR_FILE:
+		if (0 > sceFiosFHTell(fd)) { // C++ is a bit weird
+			errno = EBADF;
+			return -1;
+		}
 		type = ERROR_FIOS;
-		ret = sceFiosFHWritevSync(NULL, fdmap->sce_uid, iov, len);
-		break;
-	case VITA_DESCRIPTOR_DIRECTORY:
-		ret = __make_sce_errno(EBADF);
-		break;
-	}
+		ret = sceFiosFHWritevSync(NULL, fd, iov, len);
+	} else {
+		switch (fdmap->type) {
+		case VITA_DESCRIPTOR_TTY:
+		case VITA_DESCRIPTOR_PIPE:
+		case VITA_DESCRIPTOR_SOCKET:
+			ret = __writev(fdmap->sce_uid, iov, len);
+			break;
+		case VITA_DESCRIPTOR_FILE:
+			type = ERROR_FIOS;
+			ret = sceFiosFHWritevSync(NULL, fdmap->sce_uid, iov, len);
+			break;
+		case VITA_DESCRIPTOR_DIRECTORY:
+			ret = __make_sce_errno(EBADF);
+			break;
+		}
 
-	__fd_drop(fdmap);
+		__fd_drop(fdmap);
+	}
 
 	if (ret < 0) {
 		if (ret != -1)

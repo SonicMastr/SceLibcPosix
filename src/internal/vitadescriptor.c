@@ -52,7 +52,8 @@ void _init_fd(void) {
 		sceKernelUnlockLwMutex(&_fd_mutex, 1);
 		return;
 	}
-
+	 
+	// Never free this btw
 	_global_impure_ptr->_stdin = &_Stdin;
 	_global_impure_ptr->_stdout = &_Stdout;
 	_global_impure_ptr->_stderr = &_Stderr;

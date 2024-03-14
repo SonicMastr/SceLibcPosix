@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include <reent.h>
+
 #include <psp2/io/fcntl.h>
 #include <psp2/io/dirent.h>
 #include <psp2/kernel/threadmgr.h>
@@ -15,6 +17,8 @@
 #include "vitaerror.h"
 
 #include "fios2.h"
+
+extern FILE _Stdin, _Stdout, _Stderr;
 
 DescriptorTranslation *__fdmap[MAX_OPEN_FILES];
 DescriptorTranslation __fdmap_pool[MAX_OPEN_FILES];
@@ -42,6 +46,18 @@ void _init_fd(void) {
 	__fdmap[STDERR_FILENO]->sce_uid = sceKernelGetStderr();
 	__fdmap[STDERR_FILENO]->type = VITA_DESCRIPTOR_TTY;
 	__fdmap[STDERR_FILENO]->ref_count = 1;
+
+	if (_global_impure_ptr->__sdidinit)
+    {
+		sceKernelUnlockLwMutex(&_fd_mutex, 1);
+		return;
+	}
+
+	_global_impure_ptr->_stdin = &_Stdin;
+	_global_impure_ptr->_stdout = &_Stdout;
+	_global_impure_ptr->_stderr = &_Stderr;
+
+	_global_impure_ptr->__sdidinit = 1;
 
 	sceKernelUnlockLwMutex(&_fd_mutex, 1);
 }

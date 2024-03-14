@@ -80,6 +80,15 @@ int poll(struct pollfd _pfd[], nfds_t _nfds, int _timeout) {
 
 		DescriptorTranslation *fdmap = __fd_grab(_pfd[i].fd);
 		if (fdmap == NULL) {
+			if (0 > sceFiosFHTell(_pfd[i].fd))
+				continue;
+			// regular files always poll true for in/out
+			if (_pfd[i].events & POLLIN)
+				_pfd[i].revents | POLLIN;
+			if (_pfd[i].events & POLLOUT)
+				_pfd[i].revents | POLLOUT;
+			if ((_pfd[i].events & POLLIN) || (_pfd[i].events & POLLOUT))
+				res++;
 			continue;
 		}
 		if (fdmap->type != VITA_DESCRIPTOR_SOCKET) {

@@ -66,10 +66,11 @@ void _initialize(unsigned int args, void *argp) {
 		}
 	}
 
-	// No need to abort or anything. Just notify and move on
 	ret = sceKernelLoadStartModule(DEFAULT_LIBC_POSIX_PATH, 0, 0, 0, 0, 0);
-	if ((ret < 0) && (ret != 0x8002D013))
-		sceClibPrintf("Preload SceLibcExt failed 0x%08x : %s\n", ret, DEFAULT_LIBC_POSIX_PATH);
+	if ((ret < 0) && (ret != 0x8002D013)) {
+		sceClibPrintf("Preload SceLibcPosix failed 0x%08x : %s\n", ret, DEFAULT_LIBC_POSIX_PATH);
+		abort();
+	}
 
 	count = __preinit_array_end - __preinit_array_start;
 	for (loc = 0; loc < count; loc++)

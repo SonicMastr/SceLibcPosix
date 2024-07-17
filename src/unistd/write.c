@@ -41,9 +41,10 @@ ssize_t write(int fd, const void *buf, size_t nbytes) {
 			size_t len = nbytes;
 			if (len > 4 * 4096)
 				len = 4 * 4096;
-			ret = sceKernelSendMsgPipe(fdmap->sce_uid, buf, len, 1, NULL, NULL);
-			if (ret == 0)
-				ret = len;
+			size_t p_res = 0;
+			ret = sceKernelSendMsgPipe(fdmap->sce_uid, buf, len, 1, &p_res, NULL);
+			if (ret == 0) 
+				ret = p_res;
 			break;
 		}
 		}

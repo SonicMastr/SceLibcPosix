@@ -41,9 +41,10 @@ ssize_t read(int fd, void *ptr, size_t len) {
 			size_t rlen = len;
 			if (rlen > 4 * 4096)
 				rlen = 4 * 4096;
-			ret = sceKernelReceiveMsgPipe(fdmap->sce_uid, ptr, rlen, 1, NULL, NULL);
-			if (ret == 0)
-				ret = rlen;
+			size_t p_res = 0;
+			ret = sceKernelReceiveMsgPipe(fdmap->sce_uid, ptr, rlen, 1, &p_res, NULL);
+			if (ret == 0) 
+				ret = p_res;
 			break;
 		}
 		}

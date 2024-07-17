@@ -123,7 +123,7 @@ int __release_descriptor(int fd) {
 	return res;
 }
 
-int __duplicate_descriptor(int fd) {
+int __duplicate_descriptor(int fd, int minfd) {
 	int fd2 = -1;
 
 	sceKernelLockLwMutex(&_fd_mutex, 1, 0);

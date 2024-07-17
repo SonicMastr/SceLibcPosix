@@ -21,7 +21,7 @@ DEALINGS IN THE SOFTWARE.
 #include "vitadescriptor.h"
 
 int dup(int oldfd) {
-	int fd = __duplicate_descriptor(oldfd);
+	int fd = __duplicate_descriptor(oldfd, 0);
 
 	if (fd < 0) {
 		errno = EBADF;

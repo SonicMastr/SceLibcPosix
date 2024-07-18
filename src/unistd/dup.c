@@ -24,7 +24,8 @@ int dup(int oldfd) {
 	int fd = __duplicate_descriptor(oldfd, 0);
 
 	if (fd < 0) {
-		errno = EBADF;
+		if (errno != EMFILE)
+			errno = EBADF;
 		return -1;
 	}
 

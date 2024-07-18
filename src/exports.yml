@@ -3,7 +3,7 @@ SceLibcPosix:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0xd0058949
+  nid: 0x506a30e2
   main:
     start: __module_start
     stop: __module_stop
@@ -93,6 +93,7 @@ SceLibcPosix:
       - getrlimit: 0x60668a4f
       - getservbyname: 0x63aff970
       - freeaddrinfo: 0x6492e6dc
+      - dup2: 0x64dea6ce
       - wcsncasecmp: 0x66a32cba
       - inet_lnaof: 0x690dacc4
       - chdir: 0x694011c8

@@ -50,6 +50,7 @@ hidden void _free_fd(void);
 hidden int __acquire_descriptor(void);
 hidden int __release_descriptor(int fd);
 hidden int __duplicate_descriptor(int fd, int minfd);
+hidden int __duplicate_descriptor2(int oldfd, int newfd);
 hidden int __descriptor_ref_count(int fd);
 hidden DescriptorTranslation *__fd_grab(int fd);
 hidden int __fd_drop(DescriptorTranslation *fdmap);

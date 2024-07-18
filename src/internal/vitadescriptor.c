@@ -130,13 +130,39 @@ int __duplicate_descriptor(int fd, int minfd) {
 
 	if (is_fd_valid(fd)) {
 		// get free descriptor
-		for (fd2 = 3; fd2 < MAX_OPEN_FILES; ++fd2) {
+		minfd = (minfd < 3) ? 3 : minfd;
+		for (fd2 = minfd; fd2 < MAX_OPEN_FILES; ++fd2) {
 			if (__fdmap[fd2] == NULL) {
 				__fdmap[fd2] = __fdmap[fd];
 				__fdmap[fd2]->ref_count++;
 				sceKernelUnlockLwMutex(&_fd_mutex, 1);
 				return fd2;
 			}
+		}
+		errno = EMFILE;
+	}
+
+	sceKernelUnlockLwMutex(&_fd_mutex, 1);
+	return -1;
+}
+
+int __duplicate_descriptor2(int oldfd, int newfd) {
+
+	sceKernelLockLwMutex(&_fd_mutex, 1, 0);
+
+	if (is_fd_valid(oldfd)) {
+		
+		if (oldfd == newfd) {
+			return newfd;
+		}
+		
+		// get free descriptor
+		__release_descriptor(newfd);
+		if (__fdmap[newfd] == NULL) {
+			__fdmap[newfd] = __fdmap[oldfd];
+			__fdmap[newfd]->ref_count++;
+			sceKernelUnlockLwMutex(&_fd_mutex, 1);
+			return newfd;
 		}
 	}
 

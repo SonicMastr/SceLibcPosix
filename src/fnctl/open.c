@@ -12,6 +12,12 @@ int open(const char *filename, int flags, ...) {
 	int sce_flags = _fcntl2sony(flags);
 	int is_dir = 0;
 
+	unsigned long arg;
+	va_list ap;
+	va_start(ap, flags);
+	arg = va_arg(ap, unsigned long);
+	va_end(ap);
+
 	char *full_path = __realpath(filename);
 	if (!full_path) {
 		return -1;
@@ -41,7 +47,10 @@ int open(const char *filename, int flags, ...) {
 		SceFiosFH handle = 0;
 		SceFiosOpenParams openParams = SCE_FIOS_OPENPARAMS_INITIALIZER;
 		openParams.openFlags = sce_flags;
-		ret = sceFiosFHOpenSync(NULL, &handle, full_path, &openParams);
+		if ((flags & O_CREAT) && arg)
+			ret = sceFiosFHOpenWithModeSync(NULL, &handle, full_path, &openParams, arg);
+		else
+			ret = sceFiosFHOpenSync(NULL, &handle, full_path, &openParams);
 		ret = ret < 0 ? ret : handle;
 	}
 

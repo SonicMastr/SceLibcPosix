@@ -3,7 +3,7 @@ SceLibcPosix:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0x506a30e2
+  nid: 0xef76846d
   main:
     start: __module_start
     stop: __module_stop
@@ -71,6 +71,7 @@ SceLibcPosix:
       - stat: 0x40460da8
       - popen: 0x42bd1122
       - unsetenv: 0x436df44a
+      - preadv: 0x44f60d3c
       - inet_ntoa: 0x45162bb3
       - readdir: 0x4737c584
       - socket: 0x47dd56c2
@@ -126,6 +127,7 @@ SceLibcPosix:
       - inet_network: 0x9b568fb8
       - endgrent: 0x9b6fd4aa
       - getaddrinfo: 0x9bb5b421
+      - pwritev: 0x9d741457
       - setregid: 0x9da5fc0a
       - dup: 0x9eb62034
       - strfmon_l: 0x9f2d0434

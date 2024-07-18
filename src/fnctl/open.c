@@ -12,28 +12,29 @@ int open(const char *filename, int flags, ...) {
 	int sce_flags = _fcntl2sony(flags);
 	int is_dir = 0;
 
-	// check flags
-
 	char *full_path = __realpath(filename);
 	if (!full_path) {
 		return -1;
 	}
 
 	// get full path and stat. if dir - use dir funcs, otherwise - filename
-	// if O_DIRECTORY passed - check that path is indeed dir and return ENOTDIR otherwise
-	// ENOENT, etc is handled by sce funcs
+	// if O_DIRECTORY passed - check that path is indeed dir
 	if (__is_dir(full_path) == 0) {
 		is_dir = 1;
 	}
-	if (flags & O_DIRECTORY && !is_dir) {
-		free(full_path);
-		errno = ENOTDIR;
-		return -1;
-	}
 
-	if (is_dir) {
+	if (is_dir && (flags & O_DIRECTORY)) { // This is so damn ugly
 		SceFiosDH handle = 0;
 		SceFiosBuffer buf = SCE_FIOS_BUFFER_INITIALIZER;
+		if (flags & O_CREAT) {
+			if ((ret = sceFiosDirectoryCreateSync(NULL, full_path)) < 0) {
+				errno = __sce_errno_to_errno(ret, ERROR_FIOS);
+				if (errno != EEXIST) {
+					free(full_path);
+					return -1;
+				}
+			}
+		}
 		ret = sceFiosDHOpenSync(NULL, &handle, full_path, buf);
 		ret = ret < 0 ? ret : handle;
 	} else {

@@ -56,6 +56,8 @@ int __scefios2_errno_to_errno(int sce_errno) {
 	case SCE_FIOS_ERROR_BAD_FH:
 	case SCE_FIOS_ERROR_BAD_DH:
 		return EBADF;
+	case SCE_FIOS_ERROR_NOT_A_FILE:
+		return EISDIR;
 	case SCE_FIOS_ERROR_NOT_A_DIRECTORY:
 		return ENOTDIR;
 	case SCE_FIOS_ERROR_READ_ONLY:

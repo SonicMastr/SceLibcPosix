@@ -19,6 +19,10 @@ add_subdirectory(SceLibcExt)
 add_subdirectory(crt)
 add_subdirectory(src)
 
+SET(MODULE ON CACHE BOOL "Build as SUPRX for PS Vita")
+SET(STANDALONE_BUILD OFF CACHE BOOL "Build without SceLibcPosix (Only if building a Module)")
+add_subdirectory(external/pthread-embedded)
+
 if(BUILD_TESTS)
   add_subdirectory(test)
 endif()

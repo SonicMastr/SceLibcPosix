@@ -47,7 +47,7 @@ vita_create_self(SceLibcPosix.suprx SceLibcPosix PRIVATE
     UNSAFE
 )
 
-vita_create_stubs(stubs SceLibcPosix ${CMAKE_CURRENT_SOURCE_DIR}/exports.yml)
+vita_create_stubs(SceLibcPosix_stubs SceLibcPosix ${CMAKE_CURRENT_SOURCE_DIR}/exports.yml)
 
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/stubs/
     DESTINATION lib

@@ -1,0 +1,3 @@
+[submodule "external/pthread-embedded"]
+	path = external/pthread-embedded
+	url = git@github.com:SonicMastr/pthread-embedded.git

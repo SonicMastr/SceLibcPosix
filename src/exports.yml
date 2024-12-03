@@ -3,7 +3,7 @@ SceLibcPosix:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0xef76846d
+  nid: 0xa1a09cbe
   main:
     start: __module_start
     stop: __module_stop
@@ -186,6 +186,7 @@ SceLibcPosix:
       - getuid: 0xef011c8d
       - bind: 0xf08dd851
       - fcntl: 0xf2e56bb0
+      - __init_threads: 0xf472ffe7
       - wcslcat: 0xf5556bef
       - setuid: 0xf59e1c02
       - utimes: 0xf610c484
@@ -199,6 +200,7 @@ SceLibcPosix:
       - environ: 0x4c36748b
       - _global_impure_ptr: 0x53591cd0
       - g_ChunkStorage: 0x5b0241f7
+      - _tls_mutex: 0x5f1648f6
       - __fdmap: 0x801038aa
       - g_FHStorage: 0x8f4963ae
       - __fdmap_pool: 0x9c473687

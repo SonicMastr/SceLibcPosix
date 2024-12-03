@@ -4,6 +4,7 @@
 int module_start(int argc, const void *args) {
 	_init_fd();
 	__init_fios2();
+	__init_threads();
 	return 0;
 }
 int module_stop(int argc, const void *args) {

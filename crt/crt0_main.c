@@ -28,6 +28,8 @@ extern weak unsigned int __aeabi_unwind_cpp_pr2(void);
 
 extern __attribute__((section(".text"))) int main(int argc, char const *argv[]);
 
+extern weak int __thread_init(void);
+
 void _initialize(unsigned int args, void *argp) {
 	int ret;
 	const char *argv[ARGC_MAX + 1] = { "" };
@@ -56,6 +58,12 @@ void _initialize(unsigned int args, void *argp) {
 
 	argv[argc] = 0;
 
+	ret = sceKernelLoadStartModule(DEFAULT_LIBC_POSIX_PATH, 0, 0, 0, 0, 0);
+	if ((ret < 0) && (ret != 0x8002D013)) {
+		sceClibPrintf("Preload SceLibcPosix failed 0x%08x : %s\n", ret, DEFAULT_LIBC_POSIX_PATH);
+		abort();
+	}
+
 	if (_sceUserModuleList != NULL) {
 		for (loc = 0; loc < _sceUserModuleListSize; loc++) {
 			ret = sceKernelLoadStartModule(_sceUserModuleList[loc], 0, 0, 0, 0, 0);
@@ -64,12 +72,6 @@ void _initialize(unsigned int args, void *argp) {
 				abort();
 			}
 		}
-	}
-
-	ret = sceKernelLoadStartModule(DEFAULT_LIBC_POSIX_PATH, 0, 0, 0, 0, 0);
-	if ((ret < 0) && (ret != 0x8002D013)) {
-		sceClibPrintf("Preload SceLibcPosix failed 0x%08x : %s\n", ret, DEFAULT_LIBC_POSIX_PATH);
-		abort();
 	}
 
 	count = __preinit_array_end - __preinit_array_start;

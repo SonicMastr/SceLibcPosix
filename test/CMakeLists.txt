@@ -27,6 +27,9 @@ target_link_libraries(test PRIVATE
     -nostdlib
     -nostartfiles
     -nodefaultlibs
+    pthread_stub_weak
+    #stdc++
+    gcc
     SceLibcPosix_stub_weak
     SceRtc_stub
     SceNet_stub_weak
@@ -45,6 +48,7 @@ add_custom_target(devkit-launch
     DEPENDS eboot.bin-self
     COMMAND mkdir -p "${CMAKE_CURRENT_BINARY_DIR}/sce_module"
     COMMAND cp "$ENV{VITASDK}/arm-vita-eabi/modules/SceLibcPosix.suprx" "${CMAKE_CURRENT_BINARY_DIR}/sce_module/SceLibcPosix.suprx"
+    COMMAND cp "$ENV{VITASDK}/arm-vita-eabi/modules/pthread.suprx" "${CMAKE_CURRENT_BINARY_DIR}/sce_module/pthread.suprx"
     COMMAND psp2run.exe /c:process /debug /kill /workingDirectory:"${CMAKE_CURRENT_BINARY_DIR}" /elf "${CMAKE_CURRENT_BINARY_DIR}/eboot.bin"
     COMMENT "Launching ${CMAKE_CURRENT_BINARY_DIR}/eboot.bin"
 )

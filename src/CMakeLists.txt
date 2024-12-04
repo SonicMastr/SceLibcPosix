@@ -49,7 +49,11 @@ vita_create_self(SceLibcPosix.suprx SceLibcPosix PRIVATE
 
 vita_create_stubs(SceLibcPosix_stubs SceLibcPosix ${CMAKE_CURRENT_SOURCE_DIR}/exports.yml)
 
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/stubs/
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/psp2/kernel/module_param.h
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/include/psp2/kernel
+)
+
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/SceLibcPosix_stubs/
     DESTINATION lib
     FILES_MATCHING PATTERN "*.a"
 )

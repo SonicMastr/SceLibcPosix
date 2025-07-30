@@ -18,7 +18,6 @@ SceLibcPosix:
       - fsync: 0x71617f2
       - fdopendir: 0x7a07328
       - shutdown: 0x8434ba9
-      - vitasdk_get_tls_data: 0x84c725a
       - utimensat: 0x92a8572
       - timer_create: 0xa3ed572
       - sleep: 0xafa5bb5
@@ -143,11 +142,9 @@ SceLibcPosix:
       - gethostbyname: 0xa5119b58
       - setpgrp: 0xa522abff
       - geteuid: 0xa8d76df4
-      - vitasdk_delete_thread_reent: 0xabb1d390
       - setpriority: 0xac31102f
       - setsockopt: 0xad0a58ee
       - inet_netof: 0xae65d021
-      - vitasdk_get_pthread_data: 0xb04fe3bf
       - select: 0xb1a36d25
       - link: 0xb1b1bdb4
       - gettimeofday: 0xb477ef18
@@ -186,7 +183,6 @@ SceLibcPosix:
       - getuid: 0xef011c8d
       - bind: 0xf08dd851
       - fcntl: 0xf2e56bb0
-      - __init_threads: 0xf472ffe7
       - wcslcat: 0xf5556bef
       - setuid: 0xf59e1c02
       - utimes: 0xf610c484
@@ -200,7 +196,6 @@ SceLibcPosix:
       - environ: 0x4c36748b
       - _global_impure_ptr: 0x53591cd0
       - g_ChunkStorage: 0x5b0241f7
-      - _tls_mutex: 0x5f1648f6
       - __fdmap: 0x801038aa
       - g_FHStorage: 0x8f4963ae
       - __fdmap_pool: 0x9c473687

@@ -147,6 +147,7 @@ SceLibcPosix:
       - inet_netof: 0xae65d021
       - select: 0xb1a36d25
       - link: 0xb1b1bdb4
+      - arc4random: 0xb1e3f175
       - gettimeofday: 0xb477ef18
       - strfmon: 0xb4bbb2e9
       - strlcpy: 0xb53bd519
@@ -187,13 +188,13 @@ SceLibcPosix:
       - setuid: 0xf59e1c02
       - utimes: 0xf610c484
       - chown: 0xf92b5215
+      - __xpg_strerror_r: 0xf94cac5e
       - setpgid: 0xf98c98ca
       - closedir: 0xfa4403dc
       - strcasestr: 0xfae59637
       variables:
       - __cwd: 0x14686f4d
       - _fd_mutex: 0x23c71526
-      - _ctype_: 0x3d7ad040
       - environ: 0x4c36748b
       - _global_impure_ptr: 0x53591cd0
       - g_ChunkStorage: 0x5b0241f7
@@ -203,6 +204,7 @@ SceLibcPosix:
       - g_DHStorage: 0xa1ff7324
       - __crt0_module_sdk_version_var: 0xc08b0635
       - _tls_region_info: 0xc7cdb72f
+      - _ctype_: 0xd62d1568
       - g_OpStorage: 0xeddf00a4
       - _impure_ptr: 0xf05c0b9f
       - __dso_handle: 0xf49ad47a

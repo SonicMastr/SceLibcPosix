@@ -193,6 +193,7 @@ SceLibcPosix:
       variables:
       - __cwd: 0x14686f4d
       - _fd_mutex: 0x23c71526
+      - _ctype_: 0x3d7ad040
       - environ: 0x4c36748b
       - _global_impure_ptr: 0x53591cd0
       - g_ChunkStorage: 0x5b0241f7

@@ -361,7 +361,6 @@ modules:
           wscanf: 0xADC32204
           wscanf_s: 0x4B84B885
         variables:
-          _ctype_: 0x3CE6109D
           _Dbl: 0x338FE545
           _Denorm: 0xF708906E
           _FDenorm: 0x01B05132

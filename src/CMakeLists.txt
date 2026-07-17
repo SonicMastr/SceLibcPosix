@@ -19,7 +19,14 @@ add_executable(SceLibcPosix $<TARGET_OBJECTS:crt0_module>
 
 add_dependencies(SceLibcPosix SceLibcExt_stub_weak)
 
-target_compile_options(SceLibcPosix PRIVATE -fno-lto)
+target_compile_options(SceLibcPosix PRIVATE
+    -fno-lto
+    -Wno-error=implicit-function-declaration
+    -Wno-error=int-conversion
+    -Wno-error=implicit-int
+    -Wno-error=declaration-missing-parameter-type
+    -Wno-error=builtin-declaration-mismatch
+)
 
 target_include_directories(SceLibcPosix PRIVATE ../include include internal)
 

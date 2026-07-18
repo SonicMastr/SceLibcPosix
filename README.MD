@@ -2,7 +2,7 @@
 ### Posix (and extra) compatibility layer for SceLibc
 
 # Features over Newlib
- - # Much faster cached IO over Newlib, with FIOS2 Posix IO
+ - # Much faster cached IO over Newlib
     - With FIOS2 and SceLibc stdio as the driving IO backends, cached reads are miles apart
     - Random 4KiB is 48.9x faster using SceLibcPosix, and Reread 4MiB is, and I'm not kidding, over 4000x faster using SceLibcPosix. (Benchmark results in repo)
  - # SceLibc Auto-Extending Heap for Malloc

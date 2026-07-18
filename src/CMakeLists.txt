@@ -11,7 +11,8 @@ endif()
 project(libSceLibcPosix)
 include("$ENV{VITASDK}/share/vita.cmake" REQUIRED)
 
-file(GLOB_RECURSE sources *.c)
+enable_language(ASM)
+file(GLOB_RECURSE sources *.c *.S)
 
 add_executable(SceLibcPosix $<TARGET_OBJECTS:crt0_module>
     ${sources}

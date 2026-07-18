@@ -3,7 +3,7 @@ SceLibcPosix:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0xfc23b179
+  nid: 0xfb69db8f
   main:
     start: __module_start
     stop: __module_stop
@@ -56,6 +56,7 @@ SceLibcPosix:
       - __errno: 0x2fc4aff5
       - setrlimit: 0x300f4cf8
       - fstatvfs: 0x3068bb8e
+      - longjmp: 0x3091b95c
       - close: 0x310ff200
       - getrusage: 0x32fe8cd9
       - read: 0x3316348d
@@ -160,6 +161,7 @@ SceLibcPosix:
       - rmdir: 0xbc7430c4
       - pread: 0xc0375cb5
       - accept: 0xc125d039
+      - setjmp: 0xc18e0426
       - fopen: 0xc471fe99
       - module_exit: 0xc552a4c9
       - setgroups: 0xc8c109e5

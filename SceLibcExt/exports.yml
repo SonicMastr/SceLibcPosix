@@ -152,7 +152,6 @@ modules:
           lldiv: 0x3F887699
           localtime: 0xF4A2E0BF
           localtime_s: 0x2E41C336
-          longjmp: 0x2D81C8C8
           malloc: 0x775A0CB2
           malloc_stats: 0x57A729DB
           malloc_stats_fast: 0xB3D29DE1
@@ -218,7 +217,6 @@ modules:
           sceLibcSetHeapInitError: 0x5CB3DC08
           set_constraint_handler_s: 0xBA210739
           setbuf: 0x395490DA
-          setjmp: 0x50B326CE
           setvbuf: 0x2CA980A0
           snprintf: 0xA1BFF606
           snprintf_s: 0x4AB952F5

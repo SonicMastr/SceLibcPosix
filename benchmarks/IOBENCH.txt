@@ -1,0 +1,42 @@
+02:59:42    ==== IOBENCH build=newlib ====
+02:59:42    blocks=512B/4KiB/64KiB/1MiB (512B/4KiB do fewer ops; 64KiB/1MiB do 16 MiB), best of 3
+02:59:42    raw=sceIo (same both builds; rows should match), posix/stdio=libc under test
+02:59:42    
+02:59:42      test         |    512B    4KiB   64KiB    1MiB
+02:59:42      -------------+------------------------------------
+02:59:46      raw   write  |     0.12     1.11     5.64     5.97  MiB/s
+03:00:09      raw   read   |     2.50     8.52    12.65    13.05  MiB/s
+03:00:17      posix write  |     0.12     0.98     5.66     5.97  MiB/s
+03:00:40      posix read   |     2.47     8.49    12.64    13.05  MiB/s
+03:00:48      stdio write  |     0.24     0.96     5.87     5.74  MiB/s
+03:01:10      stdio read   |     4.08     4.12     4.13     4.13  MiB/s
+03:01:34      stdio wr+buf |     5.77    11.75    13.17     6.30  MiB/s
+03:01:46      stdio rd+buf |     7.33    14.64    14.79    14.73  MiB/s
+03:01:53      -------------+------------------------------------
+03:02:13      random 4KiB  | 2000 ops in 5572653 us ->    358.9 ops/s,   1.40 MiB/s
+03:02:13      reread 4MiB  | pass1=  12.66 pass2=  12.59 pass3=  12.57  MiB/s  (pass1=cold, later=cached if > device peak)
+03:02:44      metadata     | 150 create+write256+close in 8249251 us ->     18.2 files/s
+03:02:44    
+03:02:44    ==== IOBENCH build=newlib DONE ====
+03:02:44    
+03:03:17    
+03:03:17    ==== IOBENCH build=SceLibcPosix ====
+03:03:17    blocks=512B/4KiB/64KiB/1MiB (512B/4KiB do fewer ops; 64KiB/1MiB do 16 MiB), best of 3
+03:03:17    raw=sceIo (same both builds; rows should match), posix/stdio=libc under test
+03:03:17    
+03:03:17      test         |    512B    4KiB   64KiB    1MiB
+03:03:17      -------------+------------------------------------
+03:03:21      raw   write  |     0.12     0.97     5.71     5.91  MiB/s
+03:03:45      raw   read   |     2.49     8.52    12.58    12.98  MiB/s
+03:03:53      posix write  |     0.12     0.96     5.83     5.74  MiB/s
+03:04:16      posix read   |     2.11     7.83    11.93    12.32  MiB/s
+03:04:25      stdio write  |     4.49     5.44     5.78     5.58  MiB/s
+03:04:43      stdio read   |    12.12    12.39    12.49    12.45  MiB/s
+03:04:51      stdio wr+buf |     4.64     5.52     5.79     5.60  MiB/s
+03:05:09      stdio rd+buf |     6.39    12.78    12.75    12.70  MiB/s
+03:05:16      -------------+------------------------------------
+03:05:20      random 4KiB  | 2000 ops in 113880 us ->  17562.3 ops/s,  68.60 MiB/s
+03:05:20      reread 4MiB  | pass1=55555.56 pass2=60606.06 pass3=62500.00  MiB/s  (pass1=cold, later=cached if > device peak)
+03:05:50      metadata     | 150 create+write256+close in 8432845 us ->     17.8 files/s
+03:05:50    
+03:05:50    ==== IOBENCH build=SceLibcPosix DONE ====

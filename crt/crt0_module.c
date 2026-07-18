@@ -3,10 +3,10 @@
 
 #include "crt0_common.h"
 
-unsigned int __dso_handle;
+CRT0_LOCAL unsigned int __dso_handle;
 extern weak unsigned int _sceLdTlsDescRegionInfo;
-void *_tls_region_info = &_sceLdTlsDescRegionInfo;
-unsigned int __crt0_module_sdk_version_var = 0x03570011;
+CRT0_LOCAL void *_tls_region_info = &_sceLdTlsDescRegionInfo;
+CRT0_LOCAL unsigned int __crt0_module_sdk_version_var = 0x03570011;
 
 extern weak int module_start(unsigned int, const void *);
 extern weak int module_stop(unsigned int, const void *);
@@ -70,11 +70,11 @@ void __module_exit_main(void) {
 	}
 }
 
-int atexit(void (*func)(void)) {
+CRT0_LOCAL int atexit(void (*func)(void)) {
 	return __cxa_atexit(func, 0, 0);
 }
 
-int at_quick_exit(void (*func)(void)) {
+CRT0_LOCAL int at_quick_exit(void (*func)(void)) {
 	return __at_quick_exit(func, 0, 0);
 }
 

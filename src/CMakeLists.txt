@@ -50,11 +50,11 @@ target_link_libraries(SceLibcPosix PRIVATE
 )
 
 vita_create_self(SceLibcPosix.suprx SceLibcPosix PRIVATE
-    CONFIG exports.yml
+    GEN_EXPORTS exports.yml
     UNSAFE
 )
 
-vita_create_stubs(SceLibcPosix_stubs SceLibcPosix ${CMAKE_CURRENT_SOURCE_DIR}/exports.yml)
+vita_create_stubs(SceLibcPosix_stubs SceLibcPosix ${CMAKE_CURRENT_SOURCE_DIR}/exports.yml GEN_EXPORTS)
 
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/psp2/kernel/module_param.h
     DESTINATION ${CMAKE_INSTALL_PREFIX}/include/psp2/kernel

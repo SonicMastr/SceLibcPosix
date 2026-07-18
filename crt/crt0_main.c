@@ -10,12 +10,14 @@
 
 #define DEFAULT_LIBC_POSIX_PATH "app0:sce_module/SceLibcPosix.suprx"
 
-unsigned int __dso_handle;
+
+
+CRT0_LOCAL unsigned int __dso_handle;
 extern weak unsigned int _sceLdTlsDescRegionInfo;
-void *_tls_region_info = &_sceLdTlsDescRegionInfo;
+CRT0_LOCAL void *_tls_region_info = &_sceLdTlsDescRegionInfo;
 extern weak char *const _sceUserModuleList[];
 extern weak const int _sceUserModuleListSize;
-unsigned int __crt0_main_sdk_version_var = 0x03570011;
+CRT0_LOCAL unsigned int __crt0_main_sdk_version_var = 0x03570011;
 
 extern weak void (*__preinit_array_start[])(void);
 extern weak void (*__preinit_array_end[])(void);
@@ -89,11 +91,11 @@ int _stop(void) {
 	return 0;
 }
 
-int atexit(void (*func)(void)) {
+CRT0_LOCAL int atexit(void (*func)(void)) {
 	return __cxa_atexit(func, 0, __dso_handle);
 }
 
-int at_quick_exit(void (*func)(void)) {
+CRT0_LOCAL int at_quick_exit(void (*func)(void)) {
 	return __at_quick_exit(func, 0, __dso_handle);
 }
 

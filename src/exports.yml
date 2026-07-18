@@ -3,7 +3,7 @@ SceLibcPosix:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0xa1a09cbe
+  nid: 0xfc23b179
   main:
     start: __module_start
     stop: __module_stop
@@ -121,7 +121,6 @@ SceLibcPosix:
       - mkdir: 0x95c5007a
       - putenv: 0x9713a792
       - nanosleep: 0x9857a7f2
-      - at_quick_exit: 0x98d59313
       - __module_exit: 0x98e1e55b
       - inet_network: 0x9b568fb8
       - endgrent: 0x9b6fd4aa
@@ -156,11 +155,13 @@ SceLibcPosix:
       - setenv: 0xb75a127f
       - sendmsg: 0xb7641134
       - sethostname: 0xb948c2bd
+      - module_stop: 0xbba22fcf
       - getgid: 0xbbeeb9e9
       - rmdir: 0xbc7430c4
       - pread: 0xc0375cb5
       - accept: 0xc125d039
       - fopen: 0xc471fe99
+      - module_exit: 0xc552a4c9
       - setgroups: 0xc8c109e5
       - readdir_r: 0xcdd4512a
       - sysconf: 0xcf47ee51
@@ -168,7 +169,6 @@ SceLibcPosix:
       - getsockname: 0xda346f1a
       - fstat: 0xdb4abd0e
       - wcslcpy: 0xdcdfb53c
-      - atexit: 0xe07a8410
       - chmod: 0xe0fee4c9
       - nice: 0xe186022d
       - getpriority: 0xe21637cc
@@ -183,6 +183,7 @@ SceLibcPosix:
       - setreuid: 0xe9d1ceb8
       - getuid: 0xef011c8d
       - bind: 0xf08dd851
+      - module_start: 0xf135bab1
       - fcntl: 0xf2e56bb0
       - wcslcat: 0xf5556bef
       - setuid: 0xf59e1c02
@@ -202,9 +203,6 @@ SceLibcPosix:
       - g_FHStorage: 0x8f4963ae
       - __fdmap_pool: 0x9c473687
       - g_DHStorage: 0xa1ff7324
-      - __crt0_module_sdk_version_var: 0xc08b0635
-      - _tls_region_info: 0xc7cdb72f
       - _ctype_: 0xd62d1568
       - g_OpStorage: 0xeddf00a4
       - _impure_ptr: 0xf05c0b9f
-      - __dso_handle: 0xf49ad47a

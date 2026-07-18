@@ -46,7 +46,7 @@ Until furthur improvements and integration, there are some extra steps to use th
 6. You're good to go!
 
 ## How to Build and Install
-1. Install (VitaSDK)[https://vitasdk.org] 
+1. Install [VitaSDK](https://vitasdk.org) 
 2. `git clone https://github.com/SonicMastr/SceLibcPosix.git --recurse`
 3. `cd SceLibcPosix`
 4. `cmake -B build -S . && cmake --build build && cmake --install build`

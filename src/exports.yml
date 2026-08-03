@@ -3,7 +3,7 @@ SceLibcPosix:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0xfb69db8f
+  nid: 0x7be4992f
   main:
     start: __module_start
     stop: __module_stop
@@ -29,6 +29,7 @@ SceLibcPosix:
       - opendir: 0xfe90488
       - write: 0x10fd874b
       - inet_addr: 0x119d48a8
+      - mprotect: 0x135eac73
       - setgrent: 0x13f86819
       - futimens: 0x13fac56f
       - recv: 0x16623bbc
@@ -41,6 +42,7 @@ SceLibcPosix:
       - stpcpy: 0x1ea1788e
       - seteuid: 0x1fd0a857
       - clock_getres: 0x227c8b8e
+      - munmap: 0x22a0412b
       - open: 0x2348f998
       - timer_getoverrun: 0x2393ac7f
       - setegid: 0x24486887
@@ -66,16 +68,21 @@ SceLibcPosix:
       - gai_strerror: 0x3b008c4a
       - inet_pton: 0x3ba7a081
       - pclose: 0x3c996558
+      - munlockall: 0x3e118219
+      - msync: 0x3e21ed6f
       - pipe: 0x40082947
       - readlink: 0x402eb752
       - stat: 0x40460da8
+      - mremap: 0x4199865c
       - popen: 0x42bd1122
       - unsetenv: 0x436df44a
       - preadv: 0x44f60d3c
       - inet_ntoa: 0x45162bb3
       - readdir: 0x4737c584
       - socket: 0x47dd56c2
+      - mmap: 0x47e76b02
       - pwrite: 0x481e2dad
+      - posix_madvise: 0x4899fb61
       - setgid: 0x49a65df3
       - getsid: 0x4c1f64bf
       - getgroups: 0x4c7c1dcf
@@ -115,12 +122,14 @@ SceLibcPosix:
       - getpeername: 0x88c61890
       - fseeko: 0x8a38b66a
       - __module_stop_main: 0x8beee427
+      - mincore: 0x8c3076be
       - timer_delete: 0x8c3e4926
       - wcscasecmp: 0x8c997f9b
       - recvmsg: 0x933d53f5
       - getentropy: 0x9595ae1f
       - mkdir: 0x95c5007a
       - putenv: 0x9713a792
+      - munlock: 0x97847055
       - nanosleep: 0x9857a7f2
       - __module_exit: 0x98e1e55b
       - inet_network: 0x9b568fb8
@@ -163,6 +172,7 @@ SceLibcPosix:
       - accept: 0xc125d039
       - setjmp: 0xc18e0426
       - fopen: 0xc471fe99
+      - madvise: 0xc4b68097
       - module_exit: 0xc552a4c9
       - setgroups: 0xc8c109e5
       - readdir_r: 0xcdd4512a
@@ -183,6 +193,7 @@ SceLibcPosix:
       - realpath: 0xe7eeff1e
       - getgrgid: 0xe8ae6377
       - setreuid: 0xe9d1ceb8
+      - mlock: 0xec26791b
       - getuid: 0xef011c8d
       - bind: 0xf08dd851
       - module_start: 0xf135bab1
@@ -195,6 +206,7 @@ SceLibcPosix:
       - setpgid: 0xf98c98ca
       - closedir: 0xfa4403dc
       - strcasestr: 0xfae59637
+      - mlockall: 0xfbea9351
       variables:
       - __cwd: 0x14686f4d
       - _fd_mutex: 0x23c71526

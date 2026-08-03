@@ -47,6 +47,9 @@ target_link_libraries(SceLibcPosix PRIVATE
     SceFios2_stub_weak
     SceLibcExt_stub_weak
     SceLibKernel_stub
+    SceSysmem_stub
+    kubridge_stub_weak
+    SceVshBridge_stub_weak
     gcc
 )
 
@@ -59,6 +62,10 @@ vita_create_stubs(SceLibcPosix_stubs SceLibcPosix ${CMAKE_CURRENT_SOURCE_DIR}/ex
 
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/psp2/kernel/module_param.h
     DESTINATION ${CMAKE_INSTALL_PREFIX}/include/psp2/kernel
+)
+
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../include/sys/mman.h
+    DESTINATION ${CMAKE_INSTALL_PREFIX}/include/sys
 )
 
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/SceLibcPosix_stubs/

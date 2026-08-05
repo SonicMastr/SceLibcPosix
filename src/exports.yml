@@ -3,7 +3,7 @@ SceLibcPosix:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0xb0f3c7b9
+  nid: 0x220717d2
   main:
     start: __module_start
     stop: __module_stop

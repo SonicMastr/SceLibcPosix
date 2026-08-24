@@ -21,7 +21,7 @@ int getsockopt(int s, int level, int optname, void *optval, socklen_t *optlen) {
 	int res;
 	if (optname == SO_RCVTIMEO || optname == SO_SNDTIMEO)
 	{
-		if (optlen < sizeof(struct timeval))
+		if (*optlen < sizeof(struct timeval))
 		{
 			__fd_drop(fdmap);
 			errno = EINVAL;

@@ -27,7 +27,7 @@ int __module_start_main(unsigned int args, void *argp) {
 	size_t loc = 0;
 	size_t count = 0;
 
-	__dso_handle = &__dso_handle;
+	__dso_handle = (unsigned int)&__dso_handle;
 	if ((_tls_region_info != 0) &&
 		(ret = _sceLdTlsRegisterModuleInfo(__dso_handle, _tls_region_info,
 										   SCE_TLS_MODULE),

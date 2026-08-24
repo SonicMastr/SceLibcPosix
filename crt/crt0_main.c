@@ -40,8 +40,8 @@ void _initialize(unsigned int args, void *argp) {
 	size_t count = 0;
 	char *ptr = argp;
 
-	__dso_handle = &__dso_handle;
-	__cxa_set_dso_handle_main(__dso_handle);
+	__dso_handle = (unsigned int)&__dso_handle;
+	__cxa_set_dso_handle_main(&__dso_handle);
 	if ((_tls_region_info != 0) &&
 		(ret = _sceLdTlsRegisterModuleInfo(__dso_handle, _tls_region_info,
 										   SCE_TLS_MAIN),

@@ -3,7 +3,7 @@ SceLibcPosix:
   version:
     major: 0x1
     minor: 0x1
-  nid: 0x220717d2
+  nid: 0x1eeaf676
   main:
     start: __module_start
     stop: __module_stop
@@ -65,6 +65,7 @@ SceLibcPosix:
       - pathconf: 0x35df7fdc
       - getgrnam: 0x38accbbe
       - __locale_mb_cur_max: 0x3978d5ba
+      - memccpy: 0x3b008a17
       - gai_strerror: 0x3b008c4a
       - inet_pton: 0x3ba7a081
       - pclose: 0x3c996558

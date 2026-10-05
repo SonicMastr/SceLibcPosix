@@ -10,13 +10,14 @@
 
 #define DEFAULT_LIBC_POSIX_PATH "app0:sce_module/SceLibcPosix.suprx"
 
-
+#define SCE_LIBC_POSIX_FLAG_DISABLE_FIOS2_INIT 1
 
 CRT0_LOCAL unsigned int __dso_handle;
 extern weak unsigned int _sceLdTlsDescRegionInfo;
 CRT0_LOCAL void *_tls_region_info = &_sceLdTlsDescRegionInfo;
 extern weak char *const _sceUserModuleList[];
 extern weak const int _sceUserModuleListSize;
+weak unsigned int sceLibcPosixDisableFios2Init = 0;
 CRT0_LOCAL unsigned int __crt0_main_sdk_version_var = 0x03570011;
 
 extern weak void (*__preinit_array_start[])(void);
@@ -60,7 +61,12 @@ void _initialize(unsigned int args, void *argp) {
 
 	argv[argc] = 0;
 
-	ret = sceKernelLoadStartModule(DEFAULT_LIBC_POSIX_PATH, 0, 0, 0, 0, 0);
+	unsigned int flags = 0;
+	if (sceLibcPosixDisableFios2Init) {
+		flags |= SCE_LIBC_POSIX_FLAG_DISABLE_FIOS2_INIT;
+	}
+
+	ret = sceKernelLoadStartModule(DEFAULT_LIBC_POSIX_PATH, sizeof(flags), &flags, 0, 0, 0);
 	if ((ret < 0) && (ret != 0x8002D013)) {
 		sceClibPrintf("Preload SceLibcPosix failed 0x%08x : %s\n", ret, DEFAULT_LIBC_POSIX_PATH);
 		abort();

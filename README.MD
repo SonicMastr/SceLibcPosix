@@ -45,6 +45,12 @@ Until furthur improvements and integration, there are some extra steps to use th
     )
 6. You're good to go!
 
+## Additional Options
+
+| Variable | Default Value | Effect |
+| ------------- | ------------- | ------------- |
+| `unsigned int sceLibcPosixDisableFios2Init`  | 0 | Set to 1 if you want to initialize FIOS2 yourself. By default it is initialized automatically by SceLibcPosix on startup |
+
 ## How to Build and Install
 1. Install [VitaSDK](https://vitasdk.org) 
 2. `git clone https://github.com/SonicMastr/SceLibcPosix.git --recurse`
